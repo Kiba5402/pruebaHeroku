@@ -7,6 +7,31 @@ and open the template in the editor.
     Created on : 06-may-2018, 20:51:53
     Author     : CristianDesk
 */
+*
+{
+    box-sizing: border-box;
+}
+
+
+body{
+margin: 0;
+font-family: sans-serif;
+background: #204862;
+}
+
+
+
+.contentRegistro {
+    font-size: 27px;
+      font-weight: 300;
+      color: #fff;
+      background: #1a987b;
+      padding: 20px 0px;
+      text-align: center;
+      border-radius: 10px 10px 0px 0px;
+      border-bottom: 3px solid;
+}
+
 
 .brTit{
     background-color: #ccc;

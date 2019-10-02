@@ -8,6 +8,7 @@ and open the template in the editor.
 <link rel="stylesheet" href="site_media/plugins/css/bootstrap-grid.min.css">
 <link rel="stylesheet" href="site_media/plugins/css/bootstrap-reboot.css">
 <link rel="stylesheet" href="site_media/plugins/css/bootstrap.min.css">
+<link rel="stylesheet" href="site_media\css\Usuario\estilo.css">
 <link rel="stylesheet" href="site_media/css/main.css">
 <link href="site_media/plugins/css/open-iconic-bootstrap.css" rel="stylesheet">
 

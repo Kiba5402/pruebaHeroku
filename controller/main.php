@@ -1,16 +1,18 @@
 <?php
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Esta clase recibe solicitudes de un ajax y devuelve el html
+ *solicitado
  */
 
 switch (filter_input(INPUT_POST, 'funcion', FILTER_SANITIZE_STRING)) {
-    case 'informes':
-        include '../site_media/html/informes.html';
+    case 'registroBtn':
+        include '../site_media/html/Formulario-Registro.html';
+        break;
+    case 'atrasRegistro':
+        include '../site_media/html/home.html';
         break;
     default:
-        include '../site_media/html/construction.html';
+        include '../site_media/html/home.html';
         break;
 }  

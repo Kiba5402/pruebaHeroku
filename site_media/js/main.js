@@ -4,17 +4,17 @@
  * and open the template in the editor.
  */
 
-$('.lista').click(function () {
+function accionBtn(objectThis) {
     $.ajax({
         method: "POST",
         url: "controller/main.php",
         type: 'html',
-        data: {'funcion': $(this).attr('id')}
+        data: {'funcion': $(objectThis).attr('id')}
     }).done(function (msg) {
         console.log(msg);
         $('#contentMain').html(msg);
     });
-});
+}
 
 
 $(document).ready(function () {

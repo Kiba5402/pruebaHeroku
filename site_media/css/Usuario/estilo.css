@@ -7,7 +7,7 @@
 body{
 margin:0px;
 font-family: sans-serif;
-background: #fff;
+background: #f7f7f1;
 }
 
 .formulario-registro
@@ -22,22 +22,21 @@ background: #fff;
 
 .form_titulo
 {
-
-    margin-top: 0px;
-    background: #1a987b;
+    margin: 0em 0em 1em 0em;
+    background: #7baf4d;
     color:#fff;
-    text-align: center;
-    padding: 25px;
+    text-align: left;
+    padding: 0.8em;
     font-weight: 100;
     font-size: 20px;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
 
 }
 
 .contenedor-inputs
 {
-padding: 10 px 30 px;
+padding: 10px 30px;
 display: flex;
 flex-wrap: wrap;
 }
@@ -48,12 +47,11 @@ input
     padding: 15px;
     font-size: 16px;
     border-radius: 7px;
-    border: 1px solid #1a987b;
+    border: 1px solid #7baf4d;
 
 }
 
 .input-48
-
 {
     width: 100%;
 
@@ -61,13 +59,9 @@ input
 
 .btn-registrar
 {
-    background: #1a987b;
-    color:#fff;
-    width: 48%;
-    margin:auto;
-    padding: 10px 20px;
-    cursor:pointer;
-
+    background: #7baf4d;
+    color: #fff;
+    width: 7em;
 }
 
 

@@ -1,21 +1,16 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
-<html>
-    <head>
-        <title>Registro</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet"  href="estilo.css">
-    </head>
-    <body>
-
-    	<h2 class="form_titulo">Crea tu cuenta</h2>
-    	<form action="main.php" method="post" class="formulario-registro">
+<link rel="stylesheet" href="site_media\css\Usuario\estilo.css">
+<div>
+    <div class="form_titulo">
+        <div class="row">
+            <div class="col-1">
+                <img src="./site_media/img/logo.png" style="width: 2.5em;" class="rounded" alt="...">
+            </div>
+            <div class="col-11" style="padding: 0.5em 0em 0em 2em;">
+                <h3>Crea tu cuenta</h3>
+            </div>
+        </div>
+    </div>
+    <form method="post" class="formulario-registro">
 	        <div class="contenedor-inputs">
 	        	<input type="text" name="nombre" placeholder="Nombre" class="input-48" required="Ingresa tu nombre">
 	        	<input type="text" name="apellido" placeholder="Apellido" class="input-48" required="Ingresa Apellido">
@@ -23,9 +18,14 @@ and open the template in the editor.
 	        	<input type="text" name="numero" placeholder="Nùmero de Contacto" class="input-48" required="">
 	        	<input type="password" name="contraseña" placeholder="Contraseña" class="input-48" required="">
 	        	<input type="password" name="contraseñaConfirma" placeholder="Confirma tu Contraseña" class="input-48" required="">
-	        	 <button type="submit" class="btn-registrar" href="main.html" >Registrarme</button>
 	        </div>
-         </form>
-    </body>
-</html>
-
+     <div class="row">
+        <div class="col-7" style="text-align: right;padding-right: 0em;">
+            <button type="button" class="btn btn-registrar" onclick="accionBtn(this)" id="atrasRegistro" formnovalidate>Atras</button>
+        </div>
+        <div class="col-5" style="text-align: right;padding-right: 3em;">
+            <button class="btn btn-registrar">Registrarme</button>
+        </div>
+    </div>        
+    </form>
+</div>

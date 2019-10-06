@@ -25,7 +25,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
     </head>
-    <body id="contentMain" style="background: #f7f7f1;overflow-y: hidden;">
+    <body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;">
         <?php
         include './site_media/html/home.html';
         //include './site_media/html/Formulario-Registro.html';

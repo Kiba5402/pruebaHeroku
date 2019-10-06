@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <title>Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet"  href="../../../site_media/css/Usuario/estilo.css">
+        <style>
+* {
+  box-sizing: border-box;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+[class*="colu-"] {
+  float: left;
+  padding: 15px;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-12 {width: 100%;}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+.LblMateriales {
+  padding: 2px;
+}
+
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.menu li:hover {
+  background-color: #0099cc;
+}
+</style>
+    </head>
+<body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;">
+    <div class="containe-fluid" style="overflow: hidden;">
+    <div class="form_titulo">
+       <div class="row">
+            <div class="colu-1">
+                <img src="../../../site_media/img/logo.png" style="width: 2.5em;" class="rounded" alt="...">
+                    <div class="col-11" style="padding: 0.5em 0em 0em 2em;">
+                        <h3>Detalles de tu Material</h3>
+                    </div>
+            </div>   
+         </div>
+    </div>
+<div >
+<div class="LblMateriales">
+  <h1>Material</h1>
+</div>
+
+<div class="row">
+   <label>Agrega imagenes desde la cámara o galeria</label>
+  <div class="col-12">
+   <img src="../../../site_media/img/AggregarImagenes.png" style="width: 6.5em;">
+   <img src="../../../site_media/img/AggregarImagenes.png" style="width: 6.5em;">
+   <img src="../../../site_media/img/AggregarImagenes.png"style="width: 6.5em;">
+  </div>
+  <div class="col-8">
+
+      <p><h4>Peso estimado en Kilogramo ò Litro</h4>
+        <input type="text" name="textCantidad">
+      </p>
+      <p><h4>Valor Estimado</h4><h3>$1.500</h3></p>
+  </div>
+  <div class="col-8">
+        <p><h4>Selecciona la jornada de recolección</h4></p>
+
+      </div>
+
+    <select name="Horario" placeholder="Disponibilidad Horaria" class="input-48" >
+                  <option value="0">Disponibilidad Horaria</option> 
+                   <option value="1">06:00 A.M - 09:00 A.M</option> 
+                   <option value="2">09:00 A.M - 12:00 M.D</option> 
+                   <option value="3">12:00 M.D - 03:00 P.M</option>
+                   <option value="4">03:00 P.M - 06:00 P.M</option>
+      </select>
+ <div class="row">
+  <br>
+        <div class="col-12" >
+           <a href="main.html"> <button type="button" class="btn btn-registrar" onclick="accionBtn(this)" id="atrasRegistro" formnovalidate>Atras</button></a>
+            <button class="btn btn-registrar">Agendar</button>
+        </div>
+        </div>
+        
+  </div>
+</body>
+</html>
+
+
+
+

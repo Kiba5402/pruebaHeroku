@@ -27,11 +27,16 @@ and open the template in the editor.
     </head>
     <body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;">
         <?php
-        include './site_media/html/home.html';
-        //include './site_media/html/Formulario-Registro.html';
+        session_start();
+        if (isset($_SESSION['pagIni'])) {
+            include $_SESSION['pagIni'];
+        }else{
+            include './site_media/html/home.html';
+        }
         ?>
     </body>
 </html>
 
 <!--javascript-->
 <script src="site_media/js/main.js"></script>
+<script src="site_media/js/Login/login.js"></script>

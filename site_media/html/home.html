@@ -1,26 +1,41 @@
-        <div class="container">
-		<!-- Columns are always 50% wide, on mobile and desktop -->
-			<div class="row">
-				<div class="col-12" style="margin-top: 6em; text-align: center;margin-bottom: 1.8em;">
-					<img src="./site_media/img/logo.png" style="width: 12.4em;" class="rounded" alt="...">
-					<h3 style="color: #97c160;margin-top: 0.4em;">Mundo Verde</h3> 		
-				</div>
-				<div class="offset-1 col-10" style="height:10em;">
-					  <div class="form-group">
-						<label for="exampleInputEmail1">Nombre de Usuario</label>
-						<input type="text" class="form-control" id="exampleInputEmail1">
-					  </div>
-					  <div class="form-group">
-						<label for="exampleInputPassword1">Contraseña</label>
-						<input type="password" class="form-control" id="exampleInputPassword1">
-					  </div>
-					  <p>
-					  	<a href="#ancla" id="registroBtn" onclick="accionBtn(this)">Registrarme</a>
-					  </p>
-					<button class="offset-9 col-3 btn btn-small btn-success pull-right"
-					   style="background-color: #7baf4d;border-color: #7baf4d;"
-					   onclick="btnLogin(this)" >Login</button>
-				</div>
-			</div>
+<div class="container">
+    <!-- Columns are always 50% wide, on mobile and desktop -->
+    <div class="row">
+        <div class="col-12" style="margin-top: 6em; text-align: center;margin-bottom: 1.8em;">
+            <img src="./site_media/img/logo.png" style="width: 12.4em;" class="rounded" alt="...">
+            <h3 style="color: #97c160;margin-top: 0.4em;">Mundo Verde</h3>
         </div>
+        <div class="offset-1 col-10" style="height:10em;">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Correo</label>
+                <input type="text" class="form-control" id="emaillogin">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Contraseña</label>
+                <input type="password" class="form-control" id="passwdlogin">
+            </div>
+        </div>
+        <div class="offset-1 col-3">
+            <a href="#ancla" id="registroBtn" onclick="accionBtn(this)">Registrarme</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7 hidden" style="padding: 0% 0% 0% 49%;">
+            <img id="cargaLogin" class="d-none" src="./site_media/img/Spinner.gif" style="width: 3em;margin-top: -0.3em;" alt="...">
+        </div>
+        <div class="col-4">
+            <button class="btn-block btn btn-small btn-success" style="background-color: #7baf4d;border-color: #7baf4d;" onclick="btnLogin(this)">Login</button>
+        </div>
+    </div>
+</div>
 
+<div id="modalLogin" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="margin: 76% 0em 0em 0em;">
+      <div class="modal-body" id="modalLoginBody" style="font-size: 1.2em;text-align: center;color: #ff8d00;"></div>
+      <div class="modal-footer" style="height: 2.5em;">
+        <button type="button" onclick="cerrarModal('modalLogin')" class="btn btn-sm btn-success" style="background-color: #7baf4d;border-color: #7baf4d;">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

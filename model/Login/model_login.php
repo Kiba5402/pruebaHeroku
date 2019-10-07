@@ -1,4 +1,7 @@
-<?php 
+<?php
+	if (session_status() == PHP_SESSION_NONE) {
+			session_start();
+	}
 	require_once("../../model/conexion.php");
 
 	class modelLogin{
@@ -14,6 +17,8 @@
 		}
 
 		public function login($usuario,$contrasenia){
+			//borramos una sesion existente
+			$this->borrarSesion();
 			//se crea la conexion
 			$this->creaConexion();
 			//comprobamos la existencia del usuario 
@@ -30,7 +35,7 @@
 					return 2;
 				}
 			}
-			//si no, enviamos mensaje
+			//no existe el usuario
 			else{
 				return 3;
 			}
@@ -72,7 +77,7 @@
 						on usr.id_persona_usuario = prs.id_persona
 						inner join mv_rol rol
 						on prs.id_rol_persona = rol.id_rol
-						where usr.id_usuario = 1";
+						where usr.id_usuario = $idUsr";
 			//Enviamos la consulta
 			$query = pg_query($this->conexion,$consulta) or die(-1);
 			//tomamos el resultado
@@ -97,10 +102,12 @@
 		}
 
 		//funcion logout
-		private function borrarSesion(){
-			$_SESSION = null;
-			$this->conexion->pg_close();
-			$this->conexion = null;
+		public function borrarSesion(){
+			$_SESSION = array();
+			if ($this->conexion != null) {
+				$this->conexion->pg_close();
+				$this->conexion = null;
+			}
 			return -1;
 		}
 

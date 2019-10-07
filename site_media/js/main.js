@@ -16,21 +16,7 @@ function accionBtn(objectThis) {
     });
 }
 
-//funcion ajax para el login
-function btnLogin(objectThis) {
-    $.ajax({
-        method: "POST",
-        url: "views/Login/view_login.php",
-        type: 'html',
-        data: {'args': $(objectThis).attr('id')}
-    }).done(function (msg) {
-        console.log(msg);
-        alert(msg);
-        //$('#contentMain').html(msg);
-    });
+//funcion que cierra el modal del id enviado
+function cerrarModal(idModal){
+    $('#'+idModal).modal('hide');
 }
-
-
-$(document).ready(function () {
-    console.log('asdasdasd');
-});

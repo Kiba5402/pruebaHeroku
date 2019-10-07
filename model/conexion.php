@@ -7,24 +7,20 @@
  */
 class conexion {
 
-    private $user;
-    private $pass;
     private $conn;
     private $tipoConn;
 
-    const MY_SQL = 'MY_SQL';
+    const PG_SQL = 'PG_SQL';
 
-    public function __construct($user, $pass, $tipoConn) {
-        $this->setUser($user);
-        $this->setPass($pass);
+    public function __construct($tipoConn) {
         $this->setTipoConn($tipoConn);
         $this->createConn();
     }
 
     private function createConn() {
         switch ($this->getTipoConn()) {
-            case self::MY_SQL :
-                $this->setConn($this->creaConnMysql());
+            case self::PG_SQL :
+                $this->setConn($this->creaConnPGSQL());
                 break;
             default:
                 break;
@@ -32,15 +28,18 @@ class conexion {
     }
 
     function clearConn() {
-        $this->setUser(null);
-        $this->setPass(null);
         $this->setTipoConn(null);
         $this->setConn(null);
     }
 
-    private function creaConnMysql() {
+    private function creaConnPGSQL() {
         try {
-            return new PDO('mysql:host=localhost;dbname=certificacion', $this->getUser(), $this->getPass());
+            
+            $host = "ec2-54-235-92-244.compute-1.amazonaws.com";
+            $dbname = "dbs23v1rd2lkgv";
+            $user = "rhsqpjwdszlryx";
+            $passwd = "83df7aee1c7d701ba74a7f3686fc522477caf035afc6f2c9326e3790ff1a9439";
+            return pg_connect("host=$host dbname=$dbname user=$user password=$passwd");
         } catch (PDOException $e) {
             $this->clearConn();
             echo "¡Error!: " . $e->getMessage() . "<br/>";
@@ -48,24 +47,8 @@ class conexion {
         }
     }
 
-    function getUser() {
-        return $this->user;
-    }
-
-    function getPass() {
-        return $this->pass;
-    }
-
     function getConn() {
         return $this->conn;
-    }
-
-    function setUser($user) {
-        $this->user = $user;
-    }
-
-    function setPass($pass) {
-        $this->pass = $pass;
     }
 
     function setConn($conn) {

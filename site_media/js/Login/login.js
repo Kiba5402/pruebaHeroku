@@ -38,7 +38,6 @@ function compRespLogin(msg) {
         $("#modalLoginBody").html('Ingreso Admin no permitido');
         $("#modalLogin").modal('show');
     } else {
-        console.log(msg);
         $('#contentMain').html(msg);
     }
 
@@ -71,7 +70,7 @@ function btnCerrarSesion() {
             'funcion': 'cerrarSesion',
         },
         beforeSend: function() {
-
+            $('#contentMain').addClass('modal-backdrop fade show');
         }
     }).done(function(msg) {
         if (msg == -1) {

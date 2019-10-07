@@ -11,7 +11,6 @@ function accionBtn(objectThis) {
         type: 'html',
         data: {'funcion': $(objectThis).attr('id')}
     }).done(function (msg) {
-        console.log(msg);
         $('#contentMain').html(msg);
     });
 }

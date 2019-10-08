@@ -41,3 +41,4 @@ and open the template in the editor.
 <!--javascript-->
 <script src="site_media/js/main.js"></script>
 <script src="site_media/js/Login/login.js"></script>
+<script src="site_media/js/Usuario/usuario.js"></script>

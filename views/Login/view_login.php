@@ -12,7 +12,7 @@
 			$respuesta = $this->controlador->compInfo();
 			//evaluamos la respuesta
 			if ($respuesta !== 2 && $respuesta !== 3 && $respuesta !== 4) {
-				return include $respuesta;
+				include $respuesta;
 			}else{
 				return $respuesta;
 			}

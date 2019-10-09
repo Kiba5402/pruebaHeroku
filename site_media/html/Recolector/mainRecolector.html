@@ -1,0 +1,138 @@
+<div class="">
+    <div class="form_titulo">
+        <div class="row">
+            <div class="col-1">
+                <img src="./site_media/img/logo.png" style="width: 2.5em;" class="rounded" alt="...">
+            </div>
+            <div class="col-9" style="padding: 0.7em 0em 0em 2.6em;">
+                <h5>Mundo Verde - Recolector</h5>
+            </div>
+            <div class="col-1" style="padding: 0.4em 0.4em 0em 1em;">
+                <div class="btn-group" role="group">
+                    <button class="btn btn-info btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-right: 0.71em;background-color: #97c160;border-color: #97c160;">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="btnGroupDrop1">
+                        <a class="dropdown-item" href="#" onclick="btnCerrarSesion()">Cerrar Sesion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div clas="row">
+        <div class="col-12">
+            <div class="card">
+                <h5 class="card-header" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;">
+                    Historial de Pedidos
+                    <img id="cargaHistorial" class="d-none" src="./site_media/img/Spinner.gif" style="width: 1.7em;
+                    margin-top: -0.1em; margin-left: -0.3em;" alt="...">
+                </h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4" style="padding: 0% 0% 0% 1%;">
+                            <a onclick="traerHistorial()"><img src="./site_media/img/globe-icon.png" style="width: 6.5em;"></a>
+                        </div>
+                        <div class="col-8" style="padding: 4% 0% 0% 4%;font-size: 1.1em;">
+                            <p class="card-text">Aquí podrás encontrar tu historial de recogidas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div clas="row">
+        <div class="col-12">
+            <div class="card">
+                <h5 class="card-header" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;">Solicitud de Recogidas Activas
+                    <img id="cargaPedidosAct" class="d-none" src="./site_media/img/Spinner.gif" style="width: 1.7em;
+                    margin-top: -0.1em; margin-left: -0.3em;" alt="...">
+                </h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4" style="padding: 0% 0% 0% 1%;">
+                            <a onclick="traerPedidosAct()"><img src="./site_media/img/users.png" style="width: 6.5em;"></a>
+                        </div>
+                        <div class="col-8" style="padding: 4% 0% 0% 4%;font-size: 1.1em;">
+                            <p class="card-text">Aquí podrás encontrar las recogidas que tienes activas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div clas="row">
+        <div class="col-12">
+            <div class="card">
+                <h5 class="card-header" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;">Ofertas
+                    <img id="cargaMat3" class="d-none" src="./site_media/img/Spinner.gif" style="width: 1.7em;
+                    margin-top: -0.1em; margin-left: -0.3em;" alt="...">
+                </h5>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12" style="padding: 0% 0% 0% 1%;">
+                            <table class="table table-bordered table-sm">
+                                <thead>
+                                    <tr style="text-align: center;">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Cliente</th>
+                                        <th scope="col">Material</th>
+                                        <th scope="col">Peso</th>
+                                        <th scope="col">Aceptar</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="text-align: center;">
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Juan Perez</td>
+                                        <td>Carton</td>
+                                        <td>3kg</td>
+                                        <td style="text-align: center;">
+                                            <a href="#ancla">
+                                                <span class="btn-registrar badge badge-success">ok</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Alicia Sanchez</td>
+                                        <td>Carton</td>
+                                        <td>10kg</td>
+                                        <td style="text-align: center;">
+                                            <a href="#ancla">
+                                                <span class="btn-registrar badge badge-success">ok</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>Carlos Beltran</td>
+                                        <td>Aceite</td>
+                                        <td>10lt</td>
+                                        <td style="text-align: center;">
+                                            <a href="#ancla">
+                                                <span class="btn-registrar badge badge-success">ok</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>David Pardo</td>
+                                        <td>Papel</td>
+                                        <td>100kg</td>
+                                        <td style="text-align: center;">
+                                            <a href="#ancla">
+                                                <span class="btn-registrar badge badge-success">ok</span>
+                                            </a>
+                                        </td>
+                                    </tr>                                 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

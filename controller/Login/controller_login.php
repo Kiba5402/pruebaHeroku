@@ -24,12 +24,12 @@
 			//invoco la funcion login del modelo
 			$respuesta = $this->modelo->login($this->usuario,$this->contrasenia);
 			if ($respuesta != 2 || $respuesta != 3) {
-				switch ('Vendedor') {
+				switch ($respuesta[0]['nombrerol']) {
 						case 'Vendedor':
 							return '/Usuario/main.html';
 							break;
 						case 'Recolector':
-							return '/Formulario-Registro.html';
+							return '/Recolector/mainRecolector.html';
 							break;
 						default:
 							return 4;

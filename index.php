@@ -27,7 +27,9 @@ and open the template in the editor.
     </head>
     <body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;overflow-y: auto;">
         <?php
-            include './site_media/html/home.html';
+            //include './site_media/html/home.html';
+            //include './site_media/html/Usuario/main.html';
+            include './site_media/html/Recolector/mainRecolector.html';
         ?>
     </body>
 </html>
@@ -35,3 +37,4 @@ and open the template in the editor.
 <script src="site_media/js/main.js"></script>
 <script src="site_media/js/Login/login.js"></script>
 <script src="site_media/js/Usuario/usuario.js"></script>
+<script src="site_media/js/Recolector/recolector.js"></script>

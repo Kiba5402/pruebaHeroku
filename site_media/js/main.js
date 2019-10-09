@@ -4,17 +4,6 @@
  * and open the template in the editor.
  */
 
-function reloadFn(){
-    $.ajax({
-        method: "POST",
-        url: "index.php",
-        type: 'html',
-        data: { 'urlSesion': sessionStorage['Nombre'] }
-    }).done(function(msg) {
-        $('#contentMain').html(msg);
-    });
-}
-
 function accionBtn(objectThis) {
     $.ajax({
         method: "POST",
@@ -44,4 +33,10 @@ function atrasDir(funcion,direccion) {
     }).done(function(msg) {
         $('#contentMain').html(msg);
     });
+}
+
+//funcion que formatea el valor a formato moneda
+function formatMoneda(valor){
+   return parseFloat(valor, 10)
+   .toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
 }

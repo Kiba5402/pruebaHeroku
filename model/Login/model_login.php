@@ -1,7 +1,4 @@
 <?php
-	if (session_status() == PHP_SESSION_NONE) {
-			session_start();
-	}
 	require_once("../../model/conexion.php");
 
 	class modelLogin{
@@ -83,12 +80,12 @@
 			//tomamos el resultado
 			$respQuery = pg_fetch_all($query);
 			//si esxiste un resultado guardamos la infromacion en la variables de sesion
-			$this->asigVarSesion($respQuery);
-			return 1;
+			//$this->asigVarSesion($respQuery);
+			return $respQuery;
 		}
 
 		//funcion que hace la asignacion de variables
-		private function asigVarSesion($respQuery){
+		/*private function asigVarSesion($respQuery){
 			//seteamos la iformacion
 			if ($respQuery) {
 				$_SESSION['correo'] = $respQuery[0]['correo'];
@@ -99,11 +96,11 @@
             	$_SESSION['telefono'] = $respQuery[0]['telefono'];
             	$_SESSION['nombrerol'] = $respQuery[0]['nombrerol'];
 			}
-		}
+		}*/
 
 		//funcion logout
 		public function borrarSesion(){
-			$_SESSION = array();
+			//$_SESSION = array();
 			if ($this->conexion != null) {
 				$this->conexion->pg_close();
 				$this->conexion = null;
@@ -112,8 +109,5 @@
 		}
 
 	}
-
-	$prueba = new modelLogin();
-	$prueba->login("admin@mundoverde.com","123456");
 
  ?>

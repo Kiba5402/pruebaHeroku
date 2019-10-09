@@ -1,7 +1,7 @@
 <?php 
-	if (session_status() == PHP_SESSION_NONE) {
+	/*if (session_status() == PHP_SESSION_NONE) {
     		session_start();
-	}
+	}*/
 	require_once("../../model/Login/model_login.php");
 	//clase para el login 
 
@@ -23,13 +23,9 @@
 		public function compInfo(){
 			//invoco la funcion login del modelo
 			$respuesta = $this->modelo->login($this->usuario,$this->contrasenia);
-			if ($respuesta == 1) {
-				switch ($_SESSION['nombrerol']) {
+			if ($respuesta != 2 || $respuesta != 3) {
+				switch ('Vendedor') {
 						case 'Vendedor':
-							//seteamos la pagina inicial de la sesion
-							$GLOBALS["foo"] = 'asdasdasdasd';
-							$_SESSION['pagIni'] = '/html/Usuario/main.html';
-							//y retornamos la ruta
 							return '/Usuario/main.html';
 							break;
 						case 'Recolector':

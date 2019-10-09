@@ -38,7 +38,8 @@ function compRespLogin(msg) {
         $("#modalLoginBody").html('Ingreso Admin no permitido');
         $("#modalLogin").modal('show');
     } else {
-        $('#contentMain').html(msg);
+        var respuesta = JSON.parse(msg);
+        $('#contentMain').html(respuesta.html);
     }
 
 }

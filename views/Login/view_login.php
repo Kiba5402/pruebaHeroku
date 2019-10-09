@@ -12,7 +12,10 @@
 			$respuesta = $this->controlador->compInfo();
 			//evaluamos la respuesta
 			if ($respuesta !== 2 && $respuesta !== 3 && $respuesta !== 4) {
-				return $this->get_include_contents($respuesta);
+				return json_encode(array(
+					'html' => $this->get_include_contents($respuesta),
+					'ruta' => $respuesta
+				));
 			}else{
 				return $respuesta;
 			}

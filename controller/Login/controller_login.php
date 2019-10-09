@@ -27,6 +27,7 @@
 				switch ($_SESSION['nombrerol']) {
 						case 'Vendedor':
 							//seteamos la pagina inicial de la sesion
+							$GLOBALS["foo"] = 'asdasdasdasd';
 							$_SESSION['pagIni'] = '/html/Usuario/main.html';
 							//y retornamos la ruta
 							return '/Usuario/main.html';

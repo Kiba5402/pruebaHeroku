@@ -27,11 +27,12 @@
 				switch ($_SESSION['nombrerol']) {
 						case 'Vendedor':
 							//seteamos la pagina inicial de la sesion
-							$_SESSION['pagIni'] = './site_media/html/Usuario/main.html';
-							return '../../site_media/html/Usuario/main.html';
+							$_SESSION['pagIni'] = '/html/Usuario/main.html';
+							//y retornamos la ruta
+							return '/Usuario/main.html';
 							break;
 						case 'Recolector':
-							return '../../site_media/html/Formulario-Registro.html';
+							return '/Formulario-Registro.html';
 							break;
 						default:
 							return 4;

@@ -18,74 +18,79 @@
             </div>
         </div>
     </div>
-      <div clas="row">
+    <div clas="row">
         <div class="col-12">
             <div class="card">
-                <h3 class="card-header" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;">Aceite</h3>
+                <h3 class="card-header" id="h3titulo" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;"></h3>
                 <div class="card-body">
                     <div class="row">
-                       <div class="col-12">
-                         <p style="font-size: 1.01em;font-weight: bold;">
-                          Agrega 3 imagenes desde la camara
-                         </p>
-                       </div> 
+                        <div class="col-12">
+                            <p style="font-size: 1.01em;font-weight: bold;">
+                                Agrega 3 imagenes desde la camara
+                            </p>
+                        </div>
                     </div>
                     <div class="row">
-                       <div class="col-4">
-                          <img src="./site_media/img/AggregarImagenes.png" class="rounded" style="width: 100%;">
-                       </div>
-                       <div class="col-4">
-                          <img src="./site_media/img/AggregarImagenes.png" class="rounded" style="width: 100%;">
-                       </div> 
-                       <div class="col-4">
-                          <img src="./site_media/img/AggregarImagenes.png" class="rounded" style="width: 100%;">
-                       </div>  
+                        <div class="col-4">
+                            <img src="./site_media/img/AggregarImagenes.png" class="rounded" style="width: 100%;">
+                        </div>
+                        <div class="col-4">
+                            <img src="./site_media/img/AggregarImagenes.png" class="rounded" style="width: 100%;">
+                        </div>
+                        <div class="col-4">
+                            <img src="./site_media/img/AggregarImagenes.png" class="rounded" style="width: 100%;">
+                        </div>
                     </div>
-                </div> 
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="unidad" style="font-weight: bold;" id="undMed"></label>
+                                <input type="text" class="form-control" id="unidad">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="valor" style="font-weight: bold;">Valor Estimado</label>
+                                <input precio="" type="text" class="form-control" id="valor" value="$0" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="horario" style="font-weight: bold;">Selecciones Horario de Recogida</label>
+                                <select id="horario" class="form-control">
+                                    <option value="0" selected="">Disponibilidad Horaria</option>
+                                    <option value="1">06:00 A.M - 09:00 A.M</option>
+                                    <option value="2">09:00 A.M - 12:00 M.D</option>
+                                    <option value="3">12:00 M.D - 03:00 P.M</option>
+                                    <option value="4">03:00 P.M - 06:00 P.M</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-12" style="text-align: right; padding-right: 0em">
+                        <button type="button" class="btn btn-registrar" onclick="abrirModal()" id="inicioSesion">Atras</button>
+                        <button class="btn btn-registrar">Agendar</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-<!--<div class="row">
-  <div class="LblMateriales">
-  <h1>Material</h1>
-  </div>
-
-   <label>Agrega imagenes desde la cámara o galeria</label>
-  <div class="col-12">
-   <img src="./site_media/img/AggregarImagenes.png" style="width: 6.5em;">
-   <img src="./site_media/img/AggregarImagenes.png" style="width: 6.5em;">
-   <img src="./site_media/img/AggregarImagenes.png"style="width: 6.5em;">
-  </div>
-  <div class="col-8">
-
-      <p><h4>Peso estimado en Kilogramo ò Litro</h4>
-        <input type="text" name="textCantidad">
-      </p>
-      <p><h4>Valor Estimado</h4><h3>$1.500</h3></p>
-  </div>
-  <div class="col-8">
-        <p><h4>Selecciona la jornada de recolección</h4></p>
-
-      </div>
-
-    <select name="Horario" placeholder="Disponibilidad Horaria" class="input-48" >
-                  <option value="0">Disponibilidad Horaria</option> 
-                   <option value="1">06:00 A.M - 09:00 A.M</option> 
-                   <option value="2">09:00 A.M - 12:00 M.D</option> 
-                   <option value="3">12:00 M.D - 03:00 P.M</option>
-                   <option value="4">03:00 P.M - 06:00 P.M</option>
-      </select>
- <div class="row">
-  <br>
-        <div class="col-12" >
-           <a href="main.html"> <button type="button" class="btn btn-registrar" onclick="accionBtn(this)" id="atrasRegistro" formnovalidate>Atras</button></a>
-            <button class="btn btn-registrar">Agendar</button>
-        </div>
-        </div>
-        
-  </div>
-  -->
 </div>
-
-
-
+<div id="modalAdvertenciaAgendamiento" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="margin: 76% 0em 0em 0em;">
+            <div class="modal-body" style="font-size: 1.2em;text-align: center;">
+                ¿Estás seguro de salir de esta página? Se perderá la información de agendamiento de recogida.
+            </div>
+            <div class="modal-footer" style="height: 2.5em;">
+                <button type="button" onclick="cerrarModal('modalAdvertenciaAgendamiento')" class="btn btn-sm btn-success" style="background-color: #7baf4d;border-color: #7baf4d;">Cerrar</button>
+                <button type="button" class="btn btn-sm btn-success" onclick="accionBtn(this)" id="inicioSesion" style="background-color: #7baf4d;border-color: #7baf4d;">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>

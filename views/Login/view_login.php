@@ -1,8 +1,8 @@
 <?php 
-
+	require_once("../superView.php");
 	require_once("../../controller/Login/controller_login.php");
 
-	class view_login{
+	class view_login extends view_super{
 
 		private $controlador;
 
@@ -12,7 +12,7 @@
 			$respuesta = $this->controlador->compInfo();
 			//evaluamos la respuesta
 			if ($respuesta !== 2 && $respuesta !== 3 && $respuesta !== 4) {
-				include $respuesta;
+				return $this->get_include_contents($respuesta);
 			}else{
 				return $respuesta;
 			}

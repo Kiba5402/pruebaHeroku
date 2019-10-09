@@ -1,7 +1,8 @@
 <?php 
 	require_once("../../controller/Usuario/controlAgendamiento.php");
+	require_once("../superView.php");
 
-	class view_agendamiento{
+	class view_agendamiento extends view_super{
 
 		private $controlador;
 
@@ -11,20 +12,10 @@
 			$arregloControler = $this->controlador->pagAgendamiento($tipoMat);	
 			//formateamos el array de respuesta del controlador
 			return array(
-				'TipoMat' => $arregloControler['tipoMat'],
+				'TipoMat' => $arregloControler,
 				'html' => $this->get_include_contents($arregloControler['html'])
 			);			
 		}
-
-		function get_include_contents($filename) {
-		    if (is_file($filename)) {
-		        ob_start();
-		        include $filename;
-		        return ob_get_clean();
-		    }
-		    return false;
-		}
-
 	}
 
 	/*
@@ -36,7 +27,7 @@
 	    	//traemos la informacion
 	    	$tipoMat = filter_input(INPUT_POST, 'tipoMat', FILTER_SANITIZE_STRING);
  			$view = new view_agendamiento();
- 			echo json_encode($view->mostrarFormAgendar($tipoMat));
+  			echo json_encode($view->mostrarFormAgendar($tipoMat));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

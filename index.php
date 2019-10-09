@@ -25,11 +25,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
     </head>
-    <body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;">
+    <body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;overflow-y: auto;">
         <?php
         session_start();
         if (isset($_SESSION['pagIni'])) {
-            include $_SESSION['pagIni'];
+            include './'.$_SESSION['pagIni'];
         }else{
             include './site_media/html/home.html';
         }

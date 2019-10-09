@@ -27,7 +27,7 @@ and open the template in the editor.
     </head>
     <body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;overflow-y: auto;">
         <?php
-        echo "hola";
+        echo $GLOBALS["foo"];
         echo $_SESSION['pagIni'];
         session_start();
         if (isset($_SESSION['pagIni'])) {

@@ -6,14 +6,14 @@
 
 //funcion que trae el detalle de algun pedido 
 //que esta en el historial
-function traerDetallePedidoAct(idPedido) {
+function traerDetalleOferta(idOferta) {
     $.ajax({
         method: "POST",
-        url: "views/Recolector/viewRecogidasActivas.php",
+        url: "views/Recolector/viewOfertas.php",
         type: 'html',
         data: {
-            'funcion': 'detPedidoAct',
-            'idPedido': idPedido
+            'funcion': 'detalleOferta',
+            'idPedido': idOferta
         },
         beforeSend: function() {
             //$('#cargaHistorial').removeClass('d-none');
@@ -21,7 +21,7 @@ function traerDetallePedidoAct(idPedido) {
     }).done(function(msg) {
         var info = JSON.parse(msg);
         console.log(info);
-        $('#contentDetallePedidoActivo').html(info.html);
-        $('#modalDetallePedidoActivo').modal('show');
+        $('#contentDetalleOferta').html(info.html);
+        $('#modalDetalleOferta').modal('show');
     });
 }

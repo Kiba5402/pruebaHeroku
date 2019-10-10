@@ -38,3 +38,6 @@ and open the template in the editor.
 <script src="site_media/js/Login/login.js"></script>
 <script src="site_media/js/Usuario/usuario.js"></script>
 <script src="site_media/js/Recolector/recolector.js"></script>
+<script src="site_media/js/Recolector/historialPedidos.js"></script>
+<script src="site_media/js/Recolector/pedidosActivos.js"></script>
+

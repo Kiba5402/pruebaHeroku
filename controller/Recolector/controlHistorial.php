@@ -23,6 +23,14 @@ class controller_historial{
 		//return $infoMat;
 	}
 
+	//funcion que trae el detalle de una pedido historico
+	public function detalleHistorial($idPedido){
+		//$this->modelo = new modelAgendamiento();
+		return array(
+			'infoDetalleHistorial' => null,
+			'html' => '/Recolector/detalleHistorialPedidos.html'
+		);
+	}
 
 
 }

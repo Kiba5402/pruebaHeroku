@@ -84,6 +84,72 @@
 			return $respQuery;
 		}
 
+		//funcion que consulta el ultimo id ibnsertado en la tabla persona
+		public function ultimoIdPersona(){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "SELECT id_persona + 1 as ultId FROM public.mv_persona order by id_persona DESC limit 1;";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_fetch_all($query);
+			//retornamos el resultado
+			if ($respQuery != null) {
+				return $respQuery[0]['ultid'];
+			}else{
+				return -1;
+			}
+			
+		}
+
+		//funcion que consulta el ultimo id ibnsertado en la tabla usuario
+		public function ultimoIdUsuario(){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "SELECT id_usuario + 1 as ultId FROM public.mv_usuario order by id_usuario DESC limit 1;";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_fetch_all($query);
+			//retornamos el resultado
+			if ($respQuery != null) {
+				return $respQuery[0]['ultid'];
+			}else{
+				return -1;
+			}
+			
+		}
+
+		//funcion para crear un registro de persona
+		public function creaRegistro($idPersona, $nombre, $tel, $dir, $loc, $fechaNac, $numIdent){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "INSERT INTO public.mv_persona (id_persona, nombre, telefono, direccion, localidad, fecha_nacimiento, id_rol_persona, num_identificacion) VALUES($idPersona, '$nombre', $tel, '$dir', '$loc', '$fechaNac', 2, '$numIdent')";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_affected_rows($query);
+			//retornamos elñ resultado
+			return $respQuery;
+		}
+
+		//funcion para crear un registro de usuario
+		public function creaRegistroUsuario($idusuario, $correo, $pass, $idPersona){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "INSERT INTO public.mv_usuario (id_usuario, correo, contrasenia, id_persona_usuario) VALUES($idusuario, '$correo', '$pass', $idPersona);";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_affected_rows($query);
+			//retornamos elñ resultado
+			return $respQuery;
+		}
+
 		//funcion que hace la asignacion de variables
 		/*private function asigVarSesion($respQuery){
 			//seteamos la iformacion
@@ -109,5 +175,4 @@
 		}
 
 	}
-
  ?>

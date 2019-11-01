@@ -9,48 +9,52 @@
             </div>
         </div>
     </div>
-    <form method="post" class="formulario-registro">
-	        <div class="contenedor-inputs">
-	        	<input type="text" name="nombre" placeholder="Nombre y Apellido" class="input-48" required="Ingresa tu nombre">
-	        	<input type="text" name="Documento" placeholder="Numero de Documento" class="input-48" required="Ingresa Apellido">
-              <input name="Fecha" placeholder="Fecha de Nacimiento" class="input-48" required="Ingresa la Fecha" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">   
-              <div class="form-group">          
-                <select class="form-control input-48" style="height: 3.5em;border-color: #7baf4d;" name="Localidad" placeholder="Selecciona tu Localidad">
-                   <option value="0">Selecciona tu Localidad de Residencia</option> 
-                   <option value="1">Usaquén</option> 
-                   <option value="2">Chapinero</option> 
-                   <option value="3">Santa Fe</option>
-                   <option value="4">San Cristóbal</option> 
-                   <option value="5">Usme</option> 
-                   <option value="6">Tunjuelito</option> 
-                   <option value="7">Bosa</option> 
-                   <option value="8" >Kennedy</option> 
-                   <option value="9">Fontibón</option>
-                   <option value="10">Suba</option> 
-                   <option value="11">Barrios Unidos</option> 
-                   <option value="12">Teusaquillo</option> 
-                   <option value="13">Usme</option> 
-                   <option value="14">Los Mártires</option> 
-                   <option value="15">Antonio Nariño</option> 
-                   <option value="16">Puente Aranda</option> 
-                   <option value="17">La Candelaria</option>
-                   <option value="18">Rafael Uribe Uribe</option> 
-                   <option value="19">Ciudad Bolívar</option> 
-                   <option value="20">Sumapaz</option> 
+    <form method="post" class="formulario-registro" id="formReg">
+        <div class="contenedor-inputs">
+            <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellido" class="input-48" required="Ingresa tu nombre">
+            <input type="text" id="documento" name="Documento" placeholder="Numero de Documento" class="input-48" required="Ingresa Apellido">
+            <input name="Fecha" id="fecha" placeholder="Fecha de Nacimiento" class="input-48" required="Ingresa la Fecha" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date">
+            <div class="form-group">
+                <select class="form-control input-48" style="height: 3.5em;border-color: #7baf4d;" id="localidad" name="Localidad" placeholder="Selecciona tu Localidad">
+                    <option value="0">Selecciona tu Localidad de Residencia</option>
+                    <option value="1">Usaquén</option>
+                    <option value="2">Chapinero</option>
+                    <option value="3">Santa Fe</option>
+                    <option value="4">San Cristóbal</option>
+                    <option value="5">Usme</option>
+                    <option value="6">Tunjuelito</option>
+                    <option value="7">Bosa</option>
+                    <option value="8">Kennedy</option>
+                    <option value="9">Fontibón</option>
+                    <option value="10">Suba</option>
+                    <option value="11">Barrios Unidos</option>
+                    <option value="12">Teusaquillo</option>
+                    <option value="13">Usme</option>
+                    <option value="14">Los Mártires</option>
+                    <option value="15">Antonio Nariño</option>
+                    <option value="16">Puente Aranda</option>
+                    <option value="17">La Candelaria</option>
+                    <option value="18">Rafael Uribe Uribe</option>
+                    <option value="19">Ciudad Bolívar</option>
+                    <option value="20">Sumapaz</option>
                 </select>
-              </div> 
-	        	<input type="email" name="correo1" placeholder="Correo Electronico" class="input-48" required="">
-	        	<input type="text" name="numero" placeholder="Nùmero de Contacto" class="input-48" required="">
-	        	<input type="password" name="contraseña" placeholder="Contraseña" class="input-48" required="">
-	        	<input type="password" name="contraseñaConfirma" placeholder="Confirma tu Contraseña" class="input-48" required="">
-	        </div>
-     <div class="row">
-        <div class="col-7" style="text-align: right;padding-right: 0em;">
-            <button type="button" class="btn btn-registrar" onclick="accionBtn(this)" id="atrasRegistro" formnovalidate>Atras</button>
+            </div>
+            <input type="email" id="correo" name="correo1" placeholder="Correo Electronico" class="input-48" required="">
+            <input type="text" id="telefono" name="numero" placeholder="Nùmero de Contacto" class="input-48" required="">
+            <input type="text" id="direccion" name="direccion" placeholder="Direccion" class="input-48" required="">
+            <input type="password" id="pass1" name="contraseña" placeholder="Contraseña" class="input-48" required="">
+            <input type="password" id="pass2" name="contraseñaConfirma" placeholder="Confirma tu Contraseña" class="input-48" required="">
+            <div id="noCoinciden" class="d-none" style="color: red">
+                Las contraseñas no coinciden o el formulario esta incompleto.
+            </div>
         </div>
-        <div class="col-5" style="text-align: right;padding-right: 3em;">
-            <button class="btn btn-registrar">Registrarme</button>
+        <div class="row">
+            <div class="col-7" style="text-align: right;padding-right: 0em;">
+                <button type="button" class="btn btn-registrar" onclick="accionBtn(this)" id="atrasRegistro" formnovalidate>Atras</button>
+            </div>
+            <div onclick="btnRegistrar()" class="col-5" style="text-align: right;padding-right: 3em;">
+                <button  type="button" class="btn btn-registrar" id="btnReg" formnovalidate>Registrarme</button>
+            </div>
         </div>
-    </div>        
     </form>
 </div>

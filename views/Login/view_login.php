@@ -28,6 +28,16 @@
 			//evaluamos la respuesta
 			return $respuesta;
 		}
+
+		//funcion para registrarse
+		public function registrar($nombre, $documento, $fechaNac, $localidad, $correo, $tel, $direccion, $pass){
+				//seteamos el controlador
+				$this->controlador = new controller_login(null, null);
+				//funcion del controlador que inserta la info de usuario
+				$resultado = $this->controlador->creaNuevoUsuario($nombre, $tel, $direccion, $localidad, $fechaNac, $documento, $correo, $pass);
+				//retornamos el resultado
+				return json_encode($resultado);
+		}
 	}
 
 	/*
@@ -43,6 +53,20 @@
  			$view = new view_login();
  			echo $view->login([$email,$pass]);
 	        break;
+	    case 'registrar':
+	    	//traemos la informacion
+            $nombre = filter_input(INPUT_POST, 'nombre', FILTER_SANITIZE_STRING);
+            $documento = filter_input(INPUT_POST, 'documento', FILTER_SANITIZE_STRING);
+            $fechaNac = filter_input(INPUT_POST, 'fechaNac', FILTER_SANITIZE_STRING);
+            $localidad = filter_input(INPUT_POST, 'localidad', FILTER_SANITIZE_STRING);
+	    	$email = filter_input(INPUT_POST, 'correo', FILTER_SANITIZE_STRING);
+	    	$telefono = filter_input(INPUT_POST, 'telefono', FILTER_SANITIZE_STRING);
+	    	$direccion = filter_input(INPUT_POST, 'direccion', FILTER_SANITIZE_STRING);
+	    	$pass = filter_input(INPUT_POST, 'pass', FILTER_SANITIZE_STRING);
+	        // seteamos el view_login
+ 			$view = new view_login();
+ 			echo $view->registrar($nombre, $documento, $fechaNac, $localidad, $email, $telefono, $direccion, $pass);
+	    	break;
 	    case 'cerrarSesion':
 	        // seteamos el view_login
  			$view = new view_login();

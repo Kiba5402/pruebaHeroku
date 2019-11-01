@@ -79,3 +79,47 @@ function btnCerrarSesion() {
         }
     });
 }
+
+//funcion para registrarse
+function btnRegistrar() { 
+    //omprobamos que la contraseñas sean iguales
+    if (confirmaPass() != -1 && $('#formReg')[0].checkValidity()) {
+        $.ajax({
+            method: "POST",
+            url: "views/Login/view_login.php",
+            type: 'html',
+            data: {
+                'funcion': 'registrar',
+                'nombre': $('#nombre').val(),
+                'documento': $('#documento').val(),
+                'fechaNac': $('#fecha').val(),
+                'localidad': $('#localidad option:selected').text(),
+                'correo': $('#correo').val(),
+                'telefono': $('#telefono').val(),
+                'direccion': $('#direccion').val(),
+                'pass': $('#pass2').val()
+            },
+            beforeSend: function() {
+                //$('#contentMain').addClass('modal-backdrop fade show');
+            }
+        }).done(function(msg) {
+            console.log(msg);
+        });
+    } else {
+        $('#noCoinciden').removeClass('d-none');
+    }
+}
+
+
+
+//funcion para validar que la contraseñas son iguales
+function confirmaPass() {
+    var pass1 = $("#pass1").val();
+    var pass2 = $("#pass2").val();
+    //validamos
+    if ((pass1.trim() != pass2.trim()) || (pass1.trim() == '' || pass2.trim() == '')) {
+        return -1;
+    } else {
+        return 1;
+    }
+}

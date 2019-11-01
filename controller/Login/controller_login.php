@@ -40,6 +40,33 @@
 			}
 		}
 
+		//funcion que se encraga de una nuevo registro
+		public function creaNuevoUsuario($nombre, $tel, $dir, $loc, $fechaNac, $numIdent, $correo, $pass){
+			//consultamos el id que sigue de la tabla persona
+			$idPersona = $this->modelo->ultimoIdPersona();
+			if ($idPersona != -1) {
+				//guardamos la infiormacion de la tabla persona
+		 		$resultInsert = $this->modelo->creaRegistro($idPersona, $nombre, $tel, $dir, $loc, $fechaNac, $numIdent);
+				//consultamos el id de esta persona
+				$ultIdPersona2 = $this->modelo->ultimoIdPersona();
+				//consultamos el ultimo id de la tabla usuario
+				$idUsuario = $this->modelo->ultimoIdUsuario();
+				if ($idUsuario != -1) {
+					//guardamos un nuevo registro de usuario
+					$resultInsert2 = $this->modelo->creaRegistroUsuario($idUsuario, $correo, $pass, ($ultIdPersona2 - 1));
+					return array(
+						'insertPersona' => $resultInsert,
+						'insertUsuario' => $resultInsert2
+					);
+				}else{
+					return -1;
+				}				
+			}else{
+				return -1;
+			}
+			
+		}
+
 		//funcion que cierra la sesion actual
 		public function closeSesion(){
 			//invoco la funcion login del modelo

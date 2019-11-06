@@ -47,3 +47,21 @@ function multiplica(objectThis) {
         $('#valor').val('$0');
     }
 }
+
+//funcion que agenda la recogida del material
+function agendarRecogida() {
+    $.ajax({
+        method: "POST",
+        url: "views/Usuario/formularioAgendamientoView.php",
+        type: 'json',
+        data: {
+            'funcion': 'agendar',
+            'tipoMat': idMat
+        },
+        beforeSend: function() {
+            $('#cargaMat' + idMat).removeClass('d-none');
+        }
+    }).done(function(msg) {
+        var info = JSON.parse(msg);
+    });
+}

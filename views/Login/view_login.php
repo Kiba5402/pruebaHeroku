@@ -13,8 +13,9 @@
 			//evaluamos la respuesta
 			if ($respuesta !== 2 && $respuesta !== 3 && $respuesta !== 4) {
 				return json_encode(array(
-					'html' => $this->get_include_contents($respuesta),
-					'ruta' => $respuesta
+					'html' => $this->get_include_contents($respuesta['ruta']),
+					'ruta' => $respuesta['ruta'],
+					'infoUser'=> $respuesta['infoUser']
 				));
 			}else{
 				return $respuesta;

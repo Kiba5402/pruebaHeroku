@@ -26,10 +26,14 @@
 			if ($respuesta != 2 || $respuesta != 3) {
 				switch ($respuesta[0]['nombrerol']) {
 						case 'Vendedor':
-							return '/Usuario/main.html';
+							return array(
+								'ruta' => '/Usuario/main.html',
+								'infoUser' => $respuesta[0]);
 							break;
 						case 'Recolector':
-							return '/Recolector/mainRecolector.html';
+							return array(
+								'ruta' => '/Recolector/mainRecolector.html',
+								'infoUser' => $respuesta[0]);
 							break;
 						default:
 							return 4;

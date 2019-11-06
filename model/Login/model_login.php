@@ -64,11 +64,11 @@
 			return $respQuery;
 		}
 
-		//funcion que trae la informacio  del usuario y lo seta en la 
+		//funcion que trae la informacio  del usuario y lo setea en la 
 		//variables de sesion
 		private function compInfoUsr($idUsr){
 			//creamos el query
-			$consulta = "select usr.correo, prs.nombre, prs.num_identificacion, prs.direccion,
+			$consulta = "select prs.id_persona, usr.id_usuario, usr.correo, prs.nombre, prs.num_identificacion, prs.direccion,
 						prs.localidad, prs.telefono, rol.nombrerol
 						from mv_usuario usr inner join mv_persona prs
 						on usr.id_persona_usuario = prs.id_persona

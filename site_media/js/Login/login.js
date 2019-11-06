@@ -39,7 +39,9 @@ function compRespLogin(msg) {
         $("#modalLogin").modal('show');
     } else {
         var respuesta = JSON.parse(msg);
+        console.log(respuesta);
         $('#contentMain').html(respuesta.html);
+        $('#idUser').val(respuesta.infoUser.id_persona);
     }
 
 }
@@ -81,7 +83,7 @@ function btnCerrarSesion() {
 }
 
 //funcion para registrarse
-function btnRegistrar() { 
+function btnRegistrar() {
     //omprobamos que la contraseñas sean iguales
     if (confirmaPass() != -1 && $('#formReg')[0].checkValidity()) {
         $.ajax({
@@ -116,7 +118,7 @@ function btnRegistrar() {
 }
 
 //funcion para recargar la pagina
-function recargarPag(){
+function recargarPag() {
     location.reload();
 }
 

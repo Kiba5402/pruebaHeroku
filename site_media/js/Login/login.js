@@ -101,13 +101,23 @@ function btnRegistrar() {
             },
             beforeSend: function() {
                 //$('#contentMain').addClass('modal-backdrop fade show');
+                $('#cargaReg').removeClass('d-none');
             }
         }).done(function(msg) {
-            console.log(msg);
+            var msg2 = JSON.parse(msg);
+            if (msg2.insertPersona == 1 && msg2.insertUsuario == 1) {
+                $('#modalReg').modal('show');
+                $('#cargaReg').addClass('d-none');
+            }
         });
     } else {
         $('#noCoinciden').removeClass('d-none');
     }
+}
+
+//funcion para recargar la pagina
+function recargarPag(){
+    location.reload();
 }
 
 

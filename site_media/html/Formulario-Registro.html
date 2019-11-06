@@ -49,7 +49,10 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-7" style="text-align: right;padding-right: 0em;">
+            <div class="col-1">
+                <img id="cargaReg" class="d-none" src="./site_media/img/Spinner.gif" style="width: 3em;margin-top: -0.3em;margin-left: 8em;" alt="...">
+            </div>
+            <div class="col-6" style="text-align: right;padding-right: 0em;">
                 <button type="button" class="btn btn-registrar" onclick="accionBtn(this)" id="atrasRegistro" formnovalidate>Atras</button>
             </div>
             <div onclick="btnRegistrar()" class="col-5" style="text-align: right;padding-right: 3em;">
@@ -57,4 +60,15 @@
             </div>
         </div>
     </form>
+</div>
+
+<div id="modalReg" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="margin: 76% 0em 0em 0em;">
+      <div class="modal-body" id="modalLoginBody" style="font-size: 1.2em;text-align: center;color: #ff8d00;">Se realizo el registro correctamente</div>
+      <div class="modal-footer" style="height: 2.5em;">
+        <button type="button" onclick="recargarPag()" class="btn btn-sm btn-success" style="background-color: #7baf4d;border-color: #7baf4d;">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>

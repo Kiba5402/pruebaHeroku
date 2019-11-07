@@ -102,6 +102,7 @@ function validaInfo() {
 
 //funcion que trae el formulario de detalles de material
 function traerPedidos() {
+    alert(localStorage.getItem('idPersona'));
     $.ajax({
         method: "POST",
         url: "views/Usuario/formularioAgendamientoView.php",

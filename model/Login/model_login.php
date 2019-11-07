@@ -98,7 +98,7 @@
 			if ($respQuery != null) {
 				return $respQuery[0]['ultid'];
 			}else{
-				return -1;
+				return 1;
 			}
 			
 		}
@@ -117,7 +117,7 @@
 			if ($respQuery != null) {
 				return $respQuery[0]['ultid'];
 			}else{
-				return -1;
+				return 1;
 			}
 			
 		}

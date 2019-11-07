@@ -41,7 +41,7 @@ function compRespLogin(msg) {
         var respuesta = JSON.parse(msg);
         console.log(respuesta);
         $('#contentMain').html(respuesta.html);
-        $('#idUser').val(respuesta.infoUser.id_persona);
+        sessionStorage.setItem('idPersona', respuesta.infoUser.id_persona);
     }
 
 }

@@ -19,6 +19,7 @@ if (session_status() == PHP_SESSION_NONE) {
 			$this->creaConexion();
 			//creamos el query
 			$consulta = "select mat.nombre as nombreMat,
+			mat.id_material,
 			mat.precio_und_medida,
 			md.nombre, 
 			md.simbolo
@@ -33,6 +34,71 @@ if (session_status() == PHP_SESSION_NONE) {
 			return $respQuery;
 		}
 
-	}
+		//funcion que consulta el ultimo id insertado en la tabla pedido
+		public function ultimoIdPedido(){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "SELECT id_pedido + 1 as ultId FROM public.mv_pedido order by id_pedido DESC limit 1;";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_fetch_all($query);
+			//retornamos el resultado
+			if ($respQuery != null) {
+				return $respQuery[0]['ultid'];
+			}else{
+				return 1;
+			}
+			
+		}
 
+		//funcion que consulta el ultimo id insertado en la tabla materiales de pedido
+		public function ultimoIdMatPedido(){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "SELECT id_materiales + 1 as ultId FROM public.mv_materiales_pedido order by id_materiales DESC limit 1;";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_fetch_all($query);
+			//retornamos el resultado
+			if ($respQuery != null) {
+				return $respQuery[0]['ultid'];
+			}else{
+				return 1;
+			}			
+		}
+
+		//funcion para crear un registro de pedido
+		public function creaRegistroPedido($idPedido, $id_vendedor, $horario){
+			$hoy = date('d-m-Y');
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "INSERT INTO public.mv_pedido (id_pedido, id_vendedor, id_comprador, id_estado_pedido, fecha_pedido, fecha_recogida, fecha_entrega, horariorecogida) VALUES($idPedido, $id_vendedor, NULL, 1, '$hoy', NULL, NULL, '$horario')";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_affected_rows($query);
+			//retornamos elñ resultado
+			return $respQuery;
+		}
+
+		//funcion para crear un registro de material de pedido
+		public function creaRegistroMatPedido($idMateriales, $id_material, $id_pedido, $unidades, $valor_aprox){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "INSERT INTO public.mv_materiales_pedido (id_materiales, id_material, id_pedido, unidades, valor_aprox) VALUES($idMateriales, $id_material, $id_pedido, $unidades, $valor_aprox)";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_affected_rows($query);
+			//retornamos elñ resultado
+			return $respQuery;
+		}
+
+	}
  ?>

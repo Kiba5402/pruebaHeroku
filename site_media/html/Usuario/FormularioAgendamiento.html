@@ -29,7 +29,6 @@
                                 Agrega 3 imagenes desde la camara
                             </p>
                         </div>
-                        <input accept="image/*"  type="file" capture/>
                     </div>
                     <div class="row">
                         <div class="col-4">
@@ -63,7 +62,7 @@
                             <div class="form-group">
                                 <label for="horario" style="font-weight: bold;">Selecciones Horario de Recogida</label>
                                 <select id="horario" class="form-control">
-                                    <option value="0" selected="">Disponibilidad Horaria</option>
+                                    <option value="-1" selected="">Disponibilidad Horaria</option>
                                     <option value="1">06:00 A.M - 09:00 A.M</option>
                                     <option value="2">09:00 A.M - 12:00 M.D</option>
                                     <option value="3">12:00 M.D - 03:00 P.M</option>
@@ -77,6 +76,7 @@
                         <button type="button" class="btn btn-registrar" onclick="abrirModal()" id="inicioSesion">Atras</button>
                         <button class="btn btn-registrar" onclick="agendarRecogida()">Agendar</button>
                     </div>
+                    <span id="datosAgendaIncomp" class="d-none" style="color: orange;font-size: 0.8em;">*Los datos de agendamiento no estan completos.</span>
                 </div>
             </div>
         </div>

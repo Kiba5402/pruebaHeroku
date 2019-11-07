@@ -27,8 +27,8 @@ and open the template in the editor.
     </head>
     <body id="contentMain" style="background: #f7f7f1;overflow-x: hidden;overflow-y: auto;">
         <?php
-            //include './site_media/html/home.html';
-            include './site_media/html/Usuario/main.html';
+            include './site_media/html/home.html';
+            //include './site_media/html/Usuario/main.html';
         ?>
     </body>
 </html>

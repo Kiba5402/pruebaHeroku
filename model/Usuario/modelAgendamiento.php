@@ -100,5 +100,25 @@ if (session_status() == PHP_SESSION_NONE) {
 			return $respQuery;
 		}
 
+		//funcion que consulta los pedidos realizados por el usuario 
+		public function pedidosUser($idVendedor){
+			//creamos la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "SELECT mat.nombre as \"nombreMat\",* 
+			FROM mv_pedido pedido inner join mv_materiales_pedido matPed
+			on pedido.id_pedido = matPed.id_pedido inner join mv_material mat 
+			on matPed.id_material = mat.id_material inner join mv_unidad_medida um
+			on mat.id_und_medida_material = um.id_und_medida 
+			where pedido.id_vendedor = $idVendedor 
+			order by pedido.fecha_pedido desc";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_fetch_all($query);
+			//retornamos el resultado
+			return $respQuery;
+		}
+
 	}
  ?>

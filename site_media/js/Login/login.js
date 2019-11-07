@@ -37,11 +37,10 @@ function compRespLogin(msg) {
     } else if (msg == 4) {
         $("#modalLoginBody").html('Ingreso Admin no permitido');
         $("#modalLogin").modal('show');
-    } else {
+    } else { 
         var respuesta = JSON.parse(msg);
-        console.log(respuesta);
         $('#contentMain').html(respuesta.html);
-        sessionStorage.setItem('idPersona', respuesta.infoUser.id_persona);
+        localStorage.setItem('idPersona', respuesta.infoUser.id_persona);
     }
 
 }

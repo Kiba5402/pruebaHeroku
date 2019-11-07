@@ -26,7 +26,7 @@ function viewDetallesMat(idMat) {
         div.find('#undMed').html('Cant. ' + nombreUndMed);
         div.find('#valor').attr('precio', info.TipoMat.infoMat[0].precio_und_medida);
         //seteamos el id del material 
-        sessionStorage.setItem('idMaterial', info.TipoMat.infoMat[0].id_material);
+        localStorage.setItem('idMaterial', info.TipoMat.infoMat[0].id_material);
 
         $('#contentMain').html(div);
     });
@@ -63,17 +63,25 @@ function agendarRecogida() {
             type: 'json',
             data: {
                 'funcion': 'agendarRecogida',
-                'idVendedor': sessionStorage.getItem('idPersona'),
+                'idVendedor': localStorage.getItem('idPersona'),
                 'horarioRec': $('#horario option:selected').text(),
-                'idMaterial': sessionStorage.getItem('idMaterial'),
+                'idMaterial': localStorage.getItem('idMaterial'),
                 'unidades': $('#unidad').val().trim(),
                 'valorAprox': $('#valor').attr('total')
             },
             beforeSend: function() {
-                //$('#cargaMat' + idMat).removeClass('d-none');
+                $('#unidad').attr('disabled', true);
+                $('#horario').attr('disabled', true);
+                $('#cargaAgenda').removeClass('d-none');
             }
         }).done(function(msg) {
             var info = JSON.parse(msg);
+            $('#cargaAgenda').addClass('d-none');
+            if (info.respPedido == 1 && info.respMateriales == 1) {
+                $('#modalAgendamientoOk').modal('show');
+            } else {
+                $('#modalerrorAgendamiento').modal('show');
+            }
         });
     } else {
         $('#datosAgendaIncomp').removeClass('d-none');
@@ -89,5 +97,114 @@ function validaInfo() {
         return true;
     } else {
         return false;
+    }
+}
+
+//funcion que trae el formulario de detalles de material
+function traerPedidos() {
+    $.ajax({
+        method: "POST",
+        url: "views/Usuario/formularioAgendamientoView.php",
+        type: 'json',
+        data: {
+            'funcion': 'pedidosUsr',
+            'idPersona': localStorage.getItem('idPersona')
+        },
+        beforeSend: function() {
+            //$('#cargaMat' + idMat).removeClass('d-none');
+        }
+    }).done(function(msg) {
+        var info = JSON.parse(msg);
+        console.log(msg);
+        muestraPedidos(info);
+    });
+}
+
+//funcion que pinta la informacion de pedidos del usuario
+function muestraPedidos(informacion2) {
+    $('#bodyPedidosUsr tr').remove();
+    $.each(informacion2, function(index, value) {
+        console.log(index + ": " + value);
+        var fila = $('<tr/>');
+        //columna id de pedido
+        $('<td/>', {
+            'text': value.id_pedido,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna fecha pedido
+        $('<td/>', {
+            'text': value.fecha_pedido,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna material de pedido
+        $('<td/>', {
+            'text': value.nombreMat,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna unidades de pedido
+        $('<td/>', {
+            'text': value.unidades + ' ' + value.simbolo,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna valor de pedido
+        $('<td/>', {
+            'text': '$' + formatMoneda(value.valor_aprox),
+            'style': 'white-space: nowrap; text-align:right'
+        }).appendTo(fila);
+        //columna detalle de pedido
+        $('<td/>', {
+            'html': '<a href="#ancla" onclick="">Detalle</a>',
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna estado de pedido
+        $('<td/>', {
+            'html': estadoPed(value.id_estado_pedido),
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        fila.appendTo($('#bodyPedidosUsr'));
+        console.log(fila);
+    });
+}
+
+//funcion que construlle el elemento html del estado de pedido
+function estadoPed(idEstado) {
+    switch (idEstado) {
+        case '1':
+            return $('<span/>', {
+                'class': 'badge badge-primary',
+                'text': 'A la espera'
+            });
+            break;
+        case '2':
+            return $('<span/>', {
+                'class': 'badge badge-info',
+                'text': 'Por Recoger'
+            });
+        case '3':
+            return $('<span/>', {
+                'class': 'badge badge-secondary',
+                'text': 'Recogido'
+            });
+            break;
+        case '4':
+            return $('<span/>', {
+                'class': 'badge badge-secondary',
+                'text': 'Entregado'
+            });
+            break;
+        case '5':
+            return $('<span/>', {
+                'class': 'badge badge-success',
+                'text': 'Cerrado'
+            });
+            break;
+        case '6':
+            return $('<span/>', {
+                'class': 'badge badge-dark',
+                'text': 'Cancelado'
+            });
+            break;
+        default:
+            break;
     }
 }

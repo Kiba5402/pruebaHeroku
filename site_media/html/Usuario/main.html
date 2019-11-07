@@ -127,13 +127,13 @@
     <div clas="row">
         <div class="col-12">
             <div class="card">
-                <h5 class="card-header" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;">Pedidos Activos
+                <h5 class="card-header" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;">Pedidos
                     <img id="cargaMat3" class="d-none" src="./site_media/img/Spinner.gif" style="width: 1.7em;
                     margin-top: -0.1em; margin-left: -0.3em;" alt="...">
                 </h5>
-                <div class="card-body">
+                <div class="card-body" style="overflow: auto;max-height: 15em;max-width: 22.4em;">
                     <div class="row">
-                        <div class="col-12" style="padding: 0% 0% 0% 1%;">
+                        <div class="col-12">
                             <table class="table table-bordered table-sm">
                                 <thead>
                                     <tr style="text-align: center;">
@@ -142,10 +142,14 @@
                                         <th scope="col">Material</th>
                                         <th scope="col">Peso</th>
                                         <th scope="col">Valor</th>
+                                        <th scope="col">Detalle</th>
                                         <th scope="col">Estado</th>
                                     </tr>
                                 </thead>
-                                <tbody style="text-align: center;">
+                                <tbody style="text-align: center;" id="bodyPedidosUsr">
+                                    <tr>
+                                        <td colspan="7" style="text-align: center;">Cargando informacion...</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -156,3 +160,9 @@
     </div>
     <br>
 </div>
+<script>
+    $(document).ready(function(){
+        //funcion que trae el historial de pedidos del usuario
+        traerPedidos();
+    });
+</script>

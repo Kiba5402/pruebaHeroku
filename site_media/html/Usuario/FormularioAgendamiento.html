@@ -72,9 +72,14 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="col-12" style="text-align: right; padding-right: 0em">
-                        <button type="button" class="btn btn-registrar" onclick="abrirModal()" id="inicioSesion">Atras</button>
-                        <button class="btn btn-registrar" onclick="agendarRecogida()">Agendar</button>
+                    <div class="row">
+                        <div class="col-1">
+                            <img id="cargaAgenda" class="d-none" src="./site_media/img/Spinner.gif" style="width: 3em;margin-top: -0.3em" alt="...">
+                        </div>
+                        <div class="col-11" style="text-align: right; padding-right: 0em">
+                            <button type="button" class="btn btn-registrar" onclick="abrirModal()" id="inicioSesion">Atras</button>
+                            <button class="btn btn-registrar" onclick="agendarRecogida()">Agendar</button>
+                        </div>
                     </div>
                     <span id="datosAgendaIncomp" class="d-none" style="color: orange;font-size: 0.8em;">*Los datos de agendamiento no estan completos.</span>
                 </div>
@@ -82,6 +87,8 @@
         </div>
     </div>
 </div>
+
+<!-- modal atras -->
 <div id="modalAdvertenciaAgendamiento" class="modal fade">
     <div class="modal-dialog modal-sm">
         <div class="modal-content" style="margin: 76% 0em 0em 0em;">
@@ -91,6 +98,34 @@
             <div class="modal-footer" style="height: 2.5em;">
                 <button type="button" onclick="cerrarModal('modalAdvertenciaAgendamiento')" class="btn btn-sm btn-success" style="background-color: #7baf4d;border-color: #7baf4d;">Cerrar</button>
                 <button type="button" class="btn btn-sm btn-success" onclick="atrasDir('direccion','../site_media/html/Usuario/main.html')" id="inicioSesion" style="background-color: #7baf4d;border-color: #7baf4d;">Salir</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal atras -->
+<div id="modalerrorAgendamiento" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="margin: 76% 0em 0em 0em;">
+            <div class="modal-body" style="font-size: 1.2em;text-align: center;">
+                Hubo un error al agendar la recogida de material.
+            </div>
+            <div class="modal-footer" style="height: 2.5em;">
+                <button type="button" class="btn btn-sm btn-success" onclick="atrasDir('direccion','../site_media/html/Usuario/main.html')" id="inicioSesion" style="background-color: #7baf4d;border-color: #7baf4d;">Atras</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal atras -->
+<div id="modalAgendamientoOk" class="modal fade">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="margin: 76% 0em 0em 0em;">
+            <div class="modal-body" style="font-size: 1.2em;text-align: center;">
+                Se agendo la recogida de material correctamente.
+            </div>
+            <div class="modal-footer" style="height: 2.5em;">
+                <button type="button" class="btn btn-sm btn-success" onclick="atrasDir('direccion','../site_media/html/Usuario/main.html')" id="inicioSesion" style="background-color: #7baf4d;border-color: #7baf4d;">Entendido</button>
             </div>
         </div>
     </div>

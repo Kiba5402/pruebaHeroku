@@ -15,7 +15,7 @@
 				return json_encode(array(
 					'html' => $this->get_include_contents($respuesta['ruta']),
 					'ruta' => $respuesta['ruta'],
-					'infoUser'=> $respuesta['infoUser']
+					'infoUser'=> $respuesta['infoUser'],
 				));
 			}else{
 				return $respuesta;

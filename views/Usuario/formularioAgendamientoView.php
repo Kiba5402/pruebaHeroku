@@ -26,6 +26,15 @@
 			//retornamos el resultado
 			return $respuestaGuardado;
 		}
+
+		//funcion que invoca el controlador del vendedor
+		//para complementar la informacion que sera mostrada en la
+		//primera pantalla
+		public function infoPedidosVend($idVendedor){
+			$this->controlador = new controller_agendamiento();
+			return $this->controlador->pedidosUser($idVendedor);
+		}
+
 	}
 
 	/*
@@ -42,12 +51,20 @@
 	    case 'agendarRecogida':
 	    	//traemos la informacion
 	    	$idVendedor = filter_input(INPUT_POST, 'idVendedor', FILTER_SANITIZE_STRING);
+	    	$idVendedor = (($idVendedor == '')? '-1' : $idVendedor);
 	        $horarioRec = filter_input(INPUT_POST, 'horarioRec', FILTER_SANITIZE_STRING);
-	        $idMaterial = filter_input(INPUT_POST, 'idMaterial', FILTER_SANITIZE_STRING); 
+	        $idMaterial = filter_input(INPUT_POST, 'idMaterial', FILTER_SANITIZE_STRING);
+	        $idMaterial = (($idMaterial == '')? '-1' : $idMaterial); 
 	        $unidades = filter_input(INPUT_POST, 'unidades', FILTER_SANITIZE_STRING);
 	        $valorAprox = filter_input(INPUT_POST, 'valorAprox', FILTER_SANITIZE_STRING);   
  			$view = new view_agendamiento();
   			echo json_encode($view->agendarRecogida($idVendedor,$horarioRec,$idMaterial,$unidades,$valorAprox));
+	        break;
+	    case 'pedidosUsr':
+	    	//invocamos la funcion que nos trae la informacion de los pedidos dle usuario 
+	    	$idPersona = filter_input(INPUT_POST, 'idPersona', FILTER_SANITIZE_STRING);
+	    	$view = new view_agendamiento();
+  			echo json_encode($view->infoPedidosVend($idPersona));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

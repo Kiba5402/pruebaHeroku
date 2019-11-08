@@ -25,3 +25,27 @@ function traerDetalleOferta(idOferta) {
         $('#modalDetalleOferta').modal('show');
     });
 }
+
+//funcion que trae ela informacion de las ofertas
+function traerOfertas() {
+    $.ajax({
+        method: "POST",
+        url: "views/Recolector/viewOfertas.php",
+        type: 'json',
+        data: {
+            'funcion': 'traerOfertas',
+            'idPersona': localStorage.getItem('idPersona')
+        },
+        beforeSend: function() {
+            //$('#cargaMat' + idMat).removeClass('d-none');
+        }
+    }).done(function(msg) {
+        var info = JSON.parse(msg);
+        console.log(info);
+        /*if (!info) {
+            $('#cargaTabla').html('No hay pedidos para mostrar')
+        } else {
+            muestraPedidos(info);
+        }*/
+    });
+}

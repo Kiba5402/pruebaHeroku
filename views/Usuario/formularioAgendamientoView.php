@@ -35,6 +35,17 @@
 			return $this->controlador->pedidosUser($idVendedor);
 		}
 
+		//funcion que trae los detalles de un pedido
+		public function detallePedido($idPedido){
+			$this->controlador = new controller_agendamiento();
+			$respDetallePedido =  $this->controlador->detallePedido($idPedido);
+			//formateamos el array de respuesta del controlador
+			return array(
+				'datos' => $respDetallePedido['infoPed'],
+				'html' => $this->get_include_contents($respDetallePedido['html'])
+			);	
+		}
+
 	}
 
 	/*
@@ -65,6 +76,12 @@
 	    	$idPersona = filter_input(INPUT_POST, 'idPersona', FILTER_SANITIZE_STRING);
 	    	$view = new view_agendamiento();
   			echo json_encode($view->infoPedidosVend($idPersona));
+	        break;
+	    case 'detallePedido':
+	    	//invocamos la funcion que nos trae la informacion de los pedidos dle usuario 
+	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
+	    	$view = new view_agendamiento();
+  			echo json_encode($view->detallePedido($idPedido));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

@@ -16,6 +16,16 @@
 				'html' => $this->get_include_contents($arregloControler['html'])
 			);			
 		}	
+
+		//funcion que trae un listado de ofertas para el recolector
+		public function traerOfertas($idPersona){
+			$this->controlador = new controller_ofertas();
+			$arregloControler = $this->controlador->listaOfertas($idPersona);	
+			//formateamos el array de respuesta del controlador
+			return array(
+				'infoOfertas' => $arregloControler['infoOfertas']
+			);			
+		}
 	}
 
 	/*
@@ -28,6 +38,12 @@
 	    	$idOferta = filter_input(INPUT_POST, 'idOferta', FILTER_SANITIZE_STRING);
  			$view = new view_ofertas();
   			echo json_encode($view->detalleOferta($idOferta));
+	        break;
+	    case 'traerOfertas':
+	    	//traemos la informacion
+	    	$idPersona = filter_input(INPUT_POST, 'idPersona', FILTER_SANITIZE_STRING);
+ 			$view = new view_ofertas();
+  			echo json_encode($view->traerOfertas($idPersona));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

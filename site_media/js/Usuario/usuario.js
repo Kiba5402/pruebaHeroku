@@ -116,8 +116,8 @@ function traerPedidos() {
     }).done(function(msg) {
         var info = JSON.parse(msg);
         if (!info) {
-        $('#cargaTabla').html('No hay pedidos para mostrar')
-        }else{
+            $('#cargaTabla').html('No hay pedidos para mostrar')
+        } else {
             muestraPedidos(info);
         }
     });
@@ -155,12 +155,13 @@ function muestraPedidos(informacion2) {
         }).appendTo(fila);
         //columna detalle de pedido
         $('<td/>', {
-            'html': '<a href="#ancla">'+
-                '<span class="btn-registrar badge badge-success" onclick="traerDetallePed('+value.id_pedido+')">'+
-                    'Detalles'+
-                '</span>'+
+            'html': '<a href="#ancla">' +
+                '<span class="btn-registrar badge badge-success" onclick="traerDetallePed(' + value.id_pedido + ')">' +
+                'Detalles' +
+                '</span>' +
                 '</a>',
-            'style': 'white-space: nowrap'
+            'style': 'white-space: nowrap',
+            'class': 'detallesPed'
         }).appendTo(fila);
         //columna estado de pedido
         $('<td/>', {
@@ -171,25 +172,46 @@ function muestraPedidos(informacion2) {
     });
 }
 
-//---------------!!!!!!!!!!!
 //funcion que trae el detalle del pedido hecho por el usuario
-function traerDetallePed(idPedido){
+function traerDetallePed(idPedido) {
     $.ajax({
         method: "POST",
-        url: "views/Recolector/viewHistorialPedidos.php",
+        url: "views/Usuario/formularioAgendamientoView.php",
         type: 'html',
         data: {
             'funcion': 'detallePedido',
             'idPedido': idPedido
         },
         beforeSend: function() {
-            //$('#cargaHistorial').removeClass('d-none');
+            $('#cargaPedidos').removeClass('d-none');
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(info);
-        //$('#contentDetallePedido').html(info.html);
-        //$('#modalDetallePedido').modal('show');
+        $('#cargaPedidos').addClass('d-none');
+        //contenido del modal
+        $('#contenidoModalDetallepedido').html(info.html);
+        //numero del pedido        
+        $('#numeropedido').html(info.datos[0].idPedido);
+        //tipo material
+        $('#tipoMatDetPed').html(info.datos[0].nombreMat);
+        //direccion recogida
+        $('#direccionDetPed').html(info.datos[0].direccion_vend);
+        //telefono
+        $('#telDetPed').html(info.datos[0].telefono_vend);
+        //localidad
+        $('#barrioDetPed').html(info.datos[0].localidad_vend);
+        //peso
+        $('#pesoDetPed').html(info.datos[0].unidades_material + " " + info.datos[0].unidad_medida);
+        //nombre del recolector
+        $('#nombreRecolectorDetPed').html((info.datos[0].nombre_comp == null) ? 'A la espera' : info.datos[0].nombre_comp);
+        //telefono rtecolector
+        $('#telefonoRecolectorDetPed').html((info.datos[0].telefono_comp == null) ? 'A la espera' : info.datos[0].telefono_comp);
+        //valor
+        $('#valorDetPed').html('$' + formatMoneda(info.datos[0].valor_aprox));
+        //Estado del pedido
+        $('#estadoPedDetPed').html(info.datos[0].estadoPed);
+        //mostramso el modal
+        $('#modalDetallePedido').modal('show');
     });
 }
 

@@ -17,9 +17,16 @@ class controller_ofertas{
 	}
 
 	//funcion que complementa la informacion de las ofertas
-	function compInfoPedidosAct($idOferta){ 
+	public function compInfoPedidosAct($idOferta){ 
 		//$infoMat = $this->modelo->compinfoMat($idMat);
 		//return $infoMat;
+	}
+
+	//funcion que trae un litado de ofertas para elrecolector
+	public function listaOfertas($idPersona){
+		return array(
+			'infoOfertas' => -1
+		);
 	}
 
 

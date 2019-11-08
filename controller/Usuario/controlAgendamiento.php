@@ -54,6 +54,15 @@ class controller_agendamiento{
 		return $infoPedidosUsr;
 	}
 
+	//funcion que trae el detalle del pedido
+	public function detallePedido($idPedido){
+		$this->modelo = new modelAgendamiento();
+		return array(
+			'infoPed' => $this->modelo->detallePedidosUser($idPedido),
+			'html' => '/Usuario/detallePedido.html'
+		);
+	}
+
 
 
 }

@@ -102,7 +102,6 @@ function validaInfo() {
 
 //funcion que trae el formulario de detalles de material
 function traerPedidos() {
-    $('#pruebaaa').html(localStorage.getItem('idPersona'));
     $.ajax({
         method: "POST",
         url: "views/Usuario/formularioAgendamientoView.php",
@@ -116,8 +115,11 @@ function traerPedidos() {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(msg);
-        muestraPedidos(info);
+        if (!info) {
+        $('#cargaTabla').html('No hay pedidos para mostrar')
+        }else{
+            muestraPedidos(info);
+        }
     });
 }
 
@@ -125,7 +127,6 @@ function traerPedidos() {
 function muestraPedidos(informacion2) {
     $('#bodyPedidosUsr tr').remove();
     $.each(informacion2, function(index, value) {
-        console.log(index + ": " + value);
         var fila = $('<tr/>');
         //columna id de pedido
         $('<td/>', {
@@ -154,7 +155,11 @@ function muestraPedidos(informacion2) {
         }).appendTo(fila);
         //columna detalle de pedido
         $('<td/>', {
-            'html': '<a href="#ancla" onclick="">Detalle</a>',
+            'html': '<a href="#ancla">'+
+                '<span class="btn-registrar badge badge-success" onclick="traerDetallePed('+value.id_pedido+')">'+
+                    'Detalles'+
+                '</span>'+
+                '</a>',
             'style': 'white-space: nowrap'
         }).appendTo(fila);
         //columna estado de pedido
@@ -163,9 +168,31 @@ function muestraPedidos(informacion2) {
             'style': 'white-space: nowrap'
         }).appendTo(fila);
         fila.appendTo($('#bodyPedidosUsr'));
-        console.log(fila);
     });
 }
+
+//---------------!!!!!!!!!!!
+//funcion que trae el detalle del pedido hecho por el usuario
+function traerDetallePed(idPedido){
+    $.ajax({
+        method: "POST",
+        url: "views/Recolector/viewHistorialPedidos.php",
+        type: 'html',
+        data: {
+            'funcion': 'detallePedido',
+            'idPedido': idPedido
+        },
+        beforeSend: function() {
+            //$('#cargaHistorial').removeClass('d-none');
+        }
+    }).done(function(msg) {
+        var info = JSON.parse(msg);
+        console.log(info);
+        //$('#contentDetallePedido').html(info.html);
+        //$('#modalDetallePedido').modal('show');
+    });
+}
+
 
 //funcion que construlle el elemento html del estado de pedido
 function estadoPed(idEstado) {

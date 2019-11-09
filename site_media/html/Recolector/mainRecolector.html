@@ -68,7 +68,7 @@
                     <img id="cargaMat3" class="d-none" src="./site_media/img/Spinner.gif" style="width: 1.7em;
                     margin-top: -0.1em; margin-left: -0.3em;" alt="...">
                 </h5>
-                <div class="card-body">
+                <div class="card-body" style="overflow-y: auto;max-height: 12em;">
                     <div class="row">
                         <div class="col-12" style="padding: 0% 0% 0% 1%;">
                             <table class="table table-bordered table-sm">
@@ -81,51 +81,10 @@
                                         <th scope="col">Aceptar</th>
                                     </tr>
                                 </thead>
-                                <tbody style="text-align: center;">
+                                <tbody style="text-align: center;" id="bodyTablaOfertas">
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td>Juan Perez</td>
-                                        <td>Carton</td>
-                                        <td>3kg</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetalleOferta(1)">
-                                                <span class="btn-registrar badge badge-success">ok</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Alicia Sanchez</td>
-                                        <td>Carton</td>
-                                        <td>10kg</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetalleOferta(1)">
-                                                <span class="btn-registrar badge badge-success">ok</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>Carlos Beltran</td>
-                                        <td>Aceite</td>
-                                        <td>10lt</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetalleOferta(1)">
-                                                <span class="btn-registrar badge badge-success">ok</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>David Pardo</td>
-                                        <td>Papel</td>
-                                        <td>100kg</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetalleOferta(1)">
-                                                <span class="btn-registrar badge badge-success">ok</span>
-                                            </a>
-                                        </td>
-                                    </tr>                                 
+                                        <td id="cargaTablaOfertas" colspan="7" style="text-align: center;">Cargando informacion...</td>
+                                    </tr>                   
                                 </tbody>
                             </table>
                         </div>

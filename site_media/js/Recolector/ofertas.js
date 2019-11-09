@@ -41,11 +41,51 @@ function traerOfertas() {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(info);
-        /*if (!info) {
-            $('#cargaTabla').html('No hay pedidos para mostrar')
+        if (!info) {
+            $('#cargaTablaOfertas').html('No hay ofertas para mostrar')
         } else {
-            muestraPedidos(info);
-        }*/
+            muestraOfertas(info);
+        }
+    });
+}
+
+
+//funcion que pinta la informacion de la ofertas del recolector
+function muestraOfertas(informacion2) {
+    console.log(informacion2.infoOfertas);
+    $('#bodyTablaOfertas tr').remove();
+    $.each(informacion2.infoOfertas, function(index, value) {
+        var fila = $('<tr/>');
+        //columna ip pedido
+        $('<td/>', {
+            'text': value.idPedido,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna nombre cliente
+        $('<td/>', {
+            'text': value.nombreCli,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna material
+        $('<td/>', {
+            'text': value.nombreMat,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna unidades
+        $('<td/>', {
+            'text': value.unidades+" "+value.um,
+            'style': 'white-space: nowrap'
+        }).appendTo(fila);
+        //columna aceptar pedido
+        $('<td/>', {
+            'html': '<a href="#ancla">' +
+                '<span class="badge badge-info" onclick="traerDetalleOferta(' + value.idPedido + ')">' +
+                'Detalles' +
+                '</span>' +
+                '</a>',
+            'style': 'white-space: nowrap',
+            'class': 'detallesPed'
+        }).appendTo(fila);
+        fila.appendTo($('#bodyTablaOfertas'));
     });
 }

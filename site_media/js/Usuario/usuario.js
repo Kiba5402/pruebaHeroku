@@ -114,11 +114,15 @@ function traerPedidos() {
             //$('#cargaMat' + idMat).removeClass('d-none');
         }
     }).done(function(msg) {
-        var info = JSON.parse(msg);
-        if (!info) {
-            $('#cargaTabla').html('No hay pedidos para mostrar')
-        } else {
-            muestraPedidos(info);
+        console.log(msg);
+        if (msg != -1) {
+            var info = JSON.parse(msg);
+            console.log(info);
+            if (!info) {
+                $('#cargaTabla').html('No hay pedidos para mostrar')
+            } else {
+                muestraPedidos(info);
+            }
         }
     });
 }

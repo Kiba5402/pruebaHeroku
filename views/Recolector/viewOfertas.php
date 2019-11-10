@@ -20,11 +20,16 @@
 		//funcion que trae un listado de ofertas para el recolector
 		public function traerOfertas($idPersona){
 			$this->controlador = new controller_ofertas();
-			$arregloControler = $this->controlador->listaOfertas($idPersona);	
-			//formateamos el array de respuesta del controlador
-			return array(
-				'infoOfertas' => $arregloControler['infoOfertas']
-			);			
+			$arregloControler = $this->controlador->listaOfertas($idPersona);
+			if ($arregloControler != -1) {
+				//formateamos el array de respuesta del controlador
+				return array(
+					'infoOfertas' => $arregloControler['infoOfertas']
+				);	
+			}else{
+				return -1;
+			}	
+		
 		}
 	}
 

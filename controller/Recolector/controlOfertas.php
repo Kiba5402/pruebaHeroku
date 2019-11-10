@@ -9,7 +9,7 @@ class controller_ofertas{
 	//mfuncion invocada por el view que ý que asigna la ruta del
 	//html a devolver, pero tambien complementa la informacion 
 	public function detalleOferta($idOferta){
-		//$this->modelo = new modelAgendamiento();
+		$this->modelo = new modelRecolector();
 		return array(
 			'infoOferta' => $this->compInfoOfertas($idOferta),
 			'html' => '/Recolector/detalleOferta.html'
@@ -17,22 +17,26 @@ class controller_ofertas{
 	}
 
 	//funcion que complementa la informacion de las ofertas
-	public function compInfoOfertas($idOferta){ 
-		//$infoMat = $this->modelo->compinfoMat($idMat);
-		//return $infoMat;
+	private function compInfoOfertas($idOferta){ 
+		$infoDetalleOferta = $this->modelo->detalleOferta($idOferta);
+		return $infoDetalleOferta;
 	}
 
 	//funcion que trae un litado de ofertas para elrecolector
 	public function listaOfertas($idPersona){
-		//seteamos el modelo
-		$this->model = new modelRecolector();
-		//traemos la localidad del recolector
-		$localidad = $this->model->traeLocalidad($idPersona);
-		//traemos las ofertas del recolector
-		$ofertas = $this->model->ofertasRecolector($localidad[0]['localidad']);
-		return array(
-			'infoOfertas' => $ofertas
-		);
+		if ($idPersona != null) {
+			//seteamos el modelo
+			$this->model = new modelRecolector();
+			//traemos la localidad del recolector
+			$localidad = $this->model->traeLocalidad($idPersona);
+			//traemos las ofertas del recolector
+			$ofertas = $this->model->ofertasRecolector($localidad[0]['localidad']);
+			return array(
+				'infoOfertas' => $ofertas
+			);
+		}else{
+			return -1;
+		}
 	}
 
 

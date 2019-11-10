@@ -49,9 +49,13 @@ class controller_agendamiento{
 
 	//funcion que trae la informacion sobre los pedidos que ha realizado el usuario
 	public function pedidosUser($idVendedor){
-		$this->modelo = new modelAgendamiento();
-		$infoPedidosUsr = $this->modelo->pedidosUser($idVendedor);		
-		return $infoPedidosUsr;
+		if ($idVendedor != null) {
+			$this->modelo = new modelAgendamiento();
+			$infoPedidosUsr = $this->modelo->pedidosUser($idVendedor);		
+			return $infoPedidosUsr;
+		}else{
+			return -1;
+		}
 	}
 
 	//funcion que trae el detalle del pedido

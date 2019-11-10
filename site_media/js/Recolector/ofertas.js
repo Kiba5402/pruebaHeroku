@@ -12,26 +12,45 @@ function aceptaOferta(idOferta) {
         type: 'json',
         data: {
             'funcion': 'aceptarOferta',
-            'idPersona': localStorage.getItem('idPersona')
+            'idPersona': localStorage.getItem('idPersona'),
+            'idOferta': idOferta,
         },
         beforeSend: function() {
-            //$('#cargaMat' + idMat).removeClass('d-none');
+            $('#aceptaOferta').removeClass('d-none');
+            $('.detOferta').attr('disabled', true);
         }
     }).done(function(msg) {
         if (msg != -1) {
             var info = JSON.parse(msg);
-            if (!info.infoOfertas) {
-                $('#cargaTablaOfertas').html('No hay ofertas para mostrar')
+            if (info.resultadoUpd == 1) {
+                //ocultamos la oferta en la tabla
+                $('#bodyTablaOfertas #oferta' + idOferta).remove();
+                //seteamos titulo modal
+                $('#tituloModalResp').html('Oferta aceptada');
+                //seteamos contenido modal
+                $('#cuerpoModalResp').html('<p>Usted ha aceptado la oferta, ' +
+                    'recuerde recoger el material en el horario ' +
+                    'establecido por el cliente, verifique el peso real del material ' +
+                    'y cambie el estado del pedido dentro del aplicativo, dicho pedido ' +
+                    'aparecerá en la sección de pedido activos.</p>');
             } else {
-                muestraOfertas(info);
+                //seteamos titulo modal
+                $('#tituloModalResp').html('Error al aceptar');
+                //seteamos contenido modal
+                $('#cuerpoModalResp').html('<p>Ocurrió un error en el sistema,' +
+                    ' por favor contacte con el administrador.</p>');
             }
+            //cerramos modal de detalle
+            $('#modalDetalleOferta').modal('hide');
+            //abrimos modal de respuesta
+            $('#modalResultado').modal('show');
         }
     });
 }
 
 //funcion que permite rechazar una oferta
 function rechazarOferta(idOferta) {
-    $('#bodyTablaOfertas #oferta'+idOferta).remove();
+    $('#bodyTablaOfertas #oferta' + idOferta).remove();
     $('#modalDetalleOferta').modal('hide');
 }
 
@@ -69,10 +88,12 @@ function traerDetalleOferta(idOferta) {
         $('#pesoDetOf').html(info.infoOferta[0].unidades_material + " " + info.infoOferta[0].unidad_medida);
         //valor
         $('#valorDetOf').html('$' + formatMoneda(info.infoOferta[0].valor_aprox));
+        //horario
+        $('#horarioDetOf').html(info.infoOferta[0].horario);
         //Estado del pedido
         $('#estadoPedDetOf').html(info.infoOferta[0].estadoPed);
         //seteamos los onclick de los dos botones
-        $('#btnAceptar').attr('onclick','aceptaOferta('+info.infoOferta[0].idPedido+')');
+        $('#btnAceptar').attr('onclick', 'aceptaOferta(' + info.infoOferta[0].idPedido + ')');
         $('#btnRechazar').attr('onclick', 'rechazarOferta(' + info.infoOferta[0].idPedido + ')');
         //mostramso el modal
         $('#modalDetalleOferta').modal('show');
@@ -108,8 +129,8 @@ function traerOfertas() {
 function muestraOfertas(informacion2) {
     $('#bodyTablaOfertas tr').remove();
     $.each(informacion2.infoOfertas, function(index, value) {
-        var fila = $('<tr/>',{
-            'id': 'oferta'+value.idPedido
+        var fila = $('<tr/>', {
+            'id': 'oferta' + value.idPedido
         });
         //columna ip pedido
         $('<td/>', {

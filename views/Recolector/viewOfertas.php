@@ -28,8 +28,21 @@
 				);	
 			}else{
 				return -1;
+			}		
+		}
+
+		//funcion que permite aceptar una oferta
+		public function aceptaOferta($idPersona, $idOferta){
+			if ($idPersona != null && $idOferta != null) {
+				$this->controlador = new controller_ofertas();
+				$arregloControler = $this->controlador->aceptaOferta($idPersona,$idOferta);
+				//formateamos el array de respuesta del controlador
+				return array(
+					'resultadoUpd' => $arregloControler['resultadoUpd']
+				);	
+			}else{
+				return -1;
 			}	
-		
 		}
 	}
 
@@ -44,11 +57,18 @@
  			$view = new view_ofertas();
   			echo json_encode($view->detalleOferta($idOferta));
 	        break;
-	    case 'traerOfertas':
+	    case 'traerOfertas': 
 	    	//traemos la informacion
 	    	$idPersona = filter_input(INPUT_POST, 'idPersona', FILTER_SANITIZE_STRING);
  			$view = new view_ofertas();
   			echo json_encode($view->traerOfertas($idPersona));
+	        break;
+	     case 'aceptarOferta':
+	    	//traemos la informacion
+	    	$idPersona = filter_input(INPUT_POST, 'idPersona', FILTER_SANITIZE_STRING);
+	    	$idOferta = filter_input(INPUT_POST, 'idOferta', FILTER_SANITIZE_STRING);
+ 			$view = new view_ofertas();
+  			echo json_encode($view->aceptaOferta($idPersona,$idOferta));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

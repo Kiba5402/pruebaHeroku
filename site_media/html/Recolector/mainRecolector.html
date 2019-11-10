@@ -84,7 +84,7 @@
                                 <tbody style="text-align: center;" id="bodyTablaOfertas">
                                     <tr>
                                         <td id="cargaTablaOfertas" colspan="7" style="text-align: center;">Cargando informacion...</td>
-                                    </tr>                   
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -95,15 +95,33 @@
     </div>
     <br>
 </div>
-
+<!--Modal detalle oferta-->
 <div id="modalDetalleOferta" class="modal fade" style="margin-top: 3em;">
     <div class="modal-dialog modal-sm">
         <div class="modal-content" id="contentDetalleOferta"></div>
     </div>
 </div>
+<!--Modal resultado-->
+<div id="modalResultado" class="modal fade" style="margin-top: 10em;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id="contentResultado">
+            <div class="modal-header" style="height: 2.4em;padding: 0.2em 0.5em 0em 0.3em;color: #fff;background-color: #7baf4d;">
+                <h5 class="modal-title" id="tituloModalResp"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="cuerpoModalResp"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-success btn-registrar" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Srcipt-->
 <script>
-    $(document).ready(function(){
-        //funcion que trae el historial de pedidos del usuario
-        traerOfertas();
-    });
+$(document).ready(function() {
+    //funcion que trae el historial de pedidos del usuario
+    traerOfertas();
+});
 </script>

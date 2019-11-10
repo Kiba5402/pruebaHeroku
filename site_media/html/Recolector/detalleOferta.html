@@ -67,6 +67,12 @@
             <span id="valorDetOf"></span>
         </div>
         <div class="col-6">
+            <span for="horarioDetOf" class="labeModal">Horario:</span>
+        </div>
+        <div class="col-6" style="text-align: left;font-size: 0.9em;">
+            <span id="horarioDetOf"></span>
+        </div>
+        <div class="col-6">
             <span for="estadoPedDDetOf" class="labeModal">Estado Pedido:</span>
         </div>
         <div class="col-6" style="text-align: left;">
@@ -76,12 +82,12 @@
     <hr>
     <div class="row" style="margin: 0em 0em 0em 0em;text-align: center;">
         <div class="col-6">
-            <button type="button" class="btn btn-info" id="btnAceptar">
+            <button type="button" class="btn btn-info detOferta" id="btnAceptar">
                 Aceptar
             </button>
         </div>
         <div class="col-6">
-            <button type="button" class="btn btn-danger" id="btnRechazar">
+            <button type="button" class="btn btn-danger detOferta" id="btnRechazar">
                 Rechazar
             </button>
         </div>
@@ -89,5 +95,6 @@
 </div>
 </div>
 <div class="modal-footer">
+    <img id="aceptaOferta" class="d-none" src="./site_media/img/Spinner.gif" style="width: 2.5em;" alt="...">
     <button type="button" class="btn btn-sm btn-success btn-registrar" data-dismiss="modal">Cerrar</button>
 </div>

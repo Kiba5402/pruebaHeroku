@@ -39,6 +39,17 @@ class controller_ofertas{
 		}
 	}
 
+	//funcion que permite aceptar una oferta
+	public function aceptaOferta($idPersona, $idOferta){
+		//seteamos el modelo
+		$this->model = new modelRecolector();
+		//seteamos los nuevos valoresa la oferta
+		$resultadoUpd = $this->model->aceptarOferta($idOferta,$idPersona);
+		return array(
+			'resultadoUpd' => $resultadoUpd
+		);
+	}
+
 
 
 }

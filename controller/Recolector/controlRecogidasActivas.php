@@ -1,6 +1,6 @@
 <?php
 
-//require_once("../../model/Usuario/modelAgendamiento.php");
+require_once("../../model/Recolector/modelRecolector.php");
 
 class controller_RecogidasAct{
 
@@ -9,9 +9,9 @@ class controller_RecogidasAct{
 	//mfuncion invocada por el view que ý que asigna la ruta del
 	//html a devolver, pero tambien complementa la informacion 
 	public function pagPedidosAct($idRecolector){
-		//$this->modelo = new modelAgendamiento();
+		$this->modelo = new modelRecolector();
 		return array(
-			'infoPedidosActivos' => null,
+			'infoPedidosActivos' => $this->modelo->pedidoActivos($idRecolector),
 			'html' => '/Recolector/pedidosActivos.html'
 		);
 	}
@@ -19,18 +19,27 @@ class controller_RecogidasAct{
 	//funcion que muesra el detalle de un pedido actual
 	//en progreso 
 	public function detallePedidosAct($idPedido){
-		//$this->modelo = new modelAgendamiento();
+		$this->modelo = new modelRecolector();
 		return array(
-			'infoPedidoEnProgreso' => null,
+			'infoPedidoEnProgreso' => $this->modelo->detalleOferta($idPedido),
 			'html' => '/Recolector/detallePedidoActual.html'
 		);
 	}
 
-	//funcion que complementa la informacion de los pedidos
-	//activos basados en el recolestor
-	function compInfoPedidosAct($idRecolector){ 
-		//$infoMat = $this->modelo->compinfoMat($idMat);
-		//return $infoMat;
+	//funcion que permite cambiar el estado de un pedido a recogido
+	function recogePed($idPedido){ 
+		$this->modelo = new modelRecolector();
+		return array(
+			'infoRestPed' => $this->modelo->recogerPed($idPedido)
+		);
+	}
+
+	//funcion que permite cambiar el estado de un pedido a entregado
+	function entregaPed($idPedido){ 
+		$this->modelo = new modelRecolector();
+		return array(
+			'infoEntregaPed' => $this->modelo->entregaPed($idPedido)
+		);
 	}
 
 

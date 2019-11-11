@@ -22,61 +22,26 @@
         <div class="col-12">
             <div class="card">
                 <h5 class="card-header" style="height: 1.9em;padding: 0.2em 0em 0em 0.4em;background-color: #7ea25e;color: #fff;">Listado
-                    <img id="cargaMat3" class="d-none" src="./site_media/img/Spinner.gif" style="width: 1.7em;
+                    <img id="cargaPedidoActMain" class="d-none" src="./site_media/img/Spinner.gif" style="width: 1.7em;
                     margin-top: -0.1em; margin-left: -0.3em;" alt="...">
                 </h5>
                 <div class="card-body">
-                    <div class="row">
+                    <div class="row" style="overflow-x: auto;">
                         <div class="col-12" style="padding: 0% 0% 0% 1%;">
                             <table class="table table-bordered table-sm">
                                 <thead>
                                     <tr style="text-align: center;">
+                                        <th scope="col">#</th>
+                                        <th scope="col">Fecha</th>
                                         <th scope="col">Cliente</th>
                                         <th scope="col">Material</th>
                                         <th scope="col">Estado</th>
                                         <th scope="col">Detalles</th>
                                     </tr>
                                 </thead>
-                                <tbody style="text-align: center;">
+                                <tbody style="text-align: center;" id="cuerpoTablaPedidoAct">
                                     <tr>
-                                        <td>Alicia Sanchez</td>
-                                        <td>Carton</td>
-                                        <td>Activo</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetallePedidoAct(null)">
-                                                <span class="btn-registrar badge badge-success">Detalles</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carlos Beltran</td>
-                                        <td>Aceite</td>
-                                        <td>Activo</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetallePedidoAct(null)">
-                                                <span class="btn-registrar badge badge-success">Detalles</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>David Pardo</td>
-                                        <td>Papel</td>
-                                        <td>Activo</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetallePedidoAct(null)">
-                                                <span class="btn-registrar badge badge-success">Detalles</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Carlos Reyes</td>
-                                        <td>Papel</td>
-                                        <td>Activo</td>
-                                        <td style="text-align: center;">
-                                            <a href="#ancla" onclick="traerDetallePedidoAct(null)">
-                                                <span class="btn-registrar badge badge-success">Detalles</span>
-                                            </a>
-                                        </td>
+                                        <td colspan="6" id="cargaOfertasActivas">Cargando informacion...</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -92,6 +57,23 @@
         </div>
     </div>
     <br>
+</div>
+<!--Modal resultado-->
+<div id="modalResultadoDetOfAct" class="modal fade" style="margin-top: 10em;">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" id="contentResultadoDetOfAct">
+            <div class="modal-header" style="height: 2.4em;padding: 0.2em 0.5em 0em 0.3em;color: #fff;background-color: #7baf4d;">
+                <h5 class="modal-title" id="tituloModalRespDetOfAct"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="cuerpoModalRespDetOfAct"></div>
+            <div class="modal-footer">
+                <button type="button" onclick="traerPedidosAct()" class="btn btn-sm btn-success btn-registrar" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
 </div>
 <div id="modalDetallePedidoActivo" class="modal fade" style="margin-top: 2.1em;">
     <div class="modal-dialog modal-sm">

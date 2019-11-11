@@ -31,14 +31,21 @@ function traerPedidosAct() {
         type: 'html',
         data: {
             'funcion': 'pedidosAct',
-            'idRecolector': '123'
+            'idRecolector': localStorage.getItem('idPersona')
         },
         beforeSend: function() {
             $('#cargaPedidosAct').removeClass('d-none');
         }
     }).done(function(msg) {
-        console.log(msg);
         var info = JSON.parse(msg);
+        console.log(info);
         $('#contentMain').html(info.html);
+        //ahora pintamos la informacion en la tabla
+        if (!info.infoPedidosActivos) {
+            $('#cargaOfertasActivas').html('No hay ofertas para mostrar')
+        }else{
+            muestraOfertasActivas(info.infoPedidosActivos);
+        }
     });
 }
+

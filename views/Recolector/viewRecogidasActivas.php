@@ -28,6 +28,27 @@
 			);			
 		}
 
+		//funcion que cambia el estado de un pedido a recogido
+		public function recogerPed($idPedido){
+			$this->controlador = new controller_RecogidasAct();
+			$arregloControler = $this->controlador->recogePed($idPedido);	
+			//formateamos el array de respuesta del controlador
+			return array(
+				'infoRestPed' => $arregloControler['infoRestPed']
+			);			
+		}
+
+		//funcion que cambia el estado de un pedido a entregado
+		public function entregaPed($idPedido){
+			$this->controlador = new controller_RecogidasAct();
+			$arregloControler = $this->controlador->entregaPed($idPedido);	
+			//formateamos el array de respuesta del controlador
+			return array(
+				'infoEntregaPed' => $arregloControler['infoEntregaPed']
+			);			
+		}
+
+
 		
 	}
 
@@ -47,6 +68,18 @@
 	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
  			$view = new view_recogidasActivas();
   			echo json_encode($view->mostrarDetPedidoAct($idPedido));
+	        break;
+	    case 'recoPedido':
+	    	//traemos la informacion
+	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
+ 			$view = new view_recogidasActivas();
+  			echo json_encode($view->recogerPed($idPedido));
+	        break;
+	     case 'entregaPedido':
+	    	//traemos la informacion
+	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
+ 			$view = new view_recogidasActivas();
+  			echo json_encode($view->entregaPed($idPedido));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//--------!!
 //funcion que permite aceptar una oferta
 function aceptaOferta(idOferta) {
     $.ajax({
@@ -76,6 +75,8 @@ function traerDetalleOferta(idOferta) {
         //contenido del modal
         //nombre del vendedor        
         $('#nombreVendedor').html(info.infoOferta[0].nombre_vend);
+        //fecha
+        $('#fechaDetOf').html(info.infoOferta[0].fecha);
         //tipo material
         $('#tipoMatDetOf').html(info.infoOferta[0].nombreMat);
         //direccion recogida

@@ -114,12 +114,45 @@ function muestraOfertasActivas(informacion2) {
 
 //funcion para contactar al vendedor de una material 
 function contactarPedAct(tel) {
-
+    $('#modalContacto').modal('show');
+    $('#telefonoModal').html(tel);
 }
 
 //funcion para cancelar un pedido activo
 function cancelaPedAct(idPedido) {
-
+    $.ajax({
+        method: "POST",
+        url: "views/Recolector/viewRecogidasActivas.php",
+        type: 'html',
+        data: {
+            'funcion': 'cancelaPed',
+            'idPedido': idPedido
+        },
+        beforeSend: function() {
+            $('#cargaDetPedAct').removeClass('d-none');
+            $('.btnDetPedAct').attr('disabled', true);
+        }
+    }).done(function(msg) {
+        $('#cargaPedidoActMain').addClass('d-none');
+        var info = JSON.parse(msg);
+        if (info.infoCancelaPed == 1) {
+            //seteamos titulo modal
+            $('#tituloModalRespDetOfAct').html('Pedido Cancelado');
+            //seteamos contenido modal
+            $('#cuerpoModalRespDetOfAct').html('La recogida del pedido ha sido cancelada,'+
+                ' si desea retomarlo aparecerá en el apartado de ofertas.</p>');
+        } else {
+            //seteamos titulo modal
+            $('#tituloModalRespDetOfAct').html('Error cambiar estado');
+            //seteamos contenido modal
+            $('#cuerpoModalRespDetOfAct').html('<p>Ocurrió un error en el sistema,' +
+                ' por favor contacte con el administrador.</p>');
+        }
+        //cerramos modal de detalle
+        $('#modalDetallePedidoActivo').modal('hide');
+        //abrimos modal de respuesta
+        $('#modalResultadoDetOfAct').modal('show');
+    });
 }
 
 //funcion para cambiar a estado recogido un pedido
@@ -183,8 +216,8 @@ function entregaPedAct(idPedido) {
             //seteamos titulo modal
             $('#tituloModalRespDetOfAct').html('Material Entregado');
             //seteamos contenido modal
-            $('#cuerpoModalRespDetOfAct').html('Pedido entregado a la central,'+
-                ' ahora podrá obtener información del mismo en la'+
+            $('#cuerpoModalRespDetOfAct').html('Pedido entregado a la central,' +
+                ' ahora podrá obtener información del mismo en la' +
                 ' sección historial de pedidos.</p>');
         } else {
             //seteamos titulo modal

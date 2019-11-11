@@ -48,7 +48,15 @@
 			);			
 		}
 
-
+		//funcion que cambia el estado de un pedido a cancelado
+		public function cancelaPed($idPedido){
+			$this->controlador = new controller_RecogidasAct();
+			$arregloControler = $this->controlador->cancelaPed($idPedido);	
+			//formateamos el array de respuesta del controlador
+			return array(
+				'infoCancelaPed' => $arregloControler['infoCancelaPed']
+			);			
+		}
 		
 	}
 
@@ -80,6 +88,12 @@
 	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
  			$view = new view_recogidasActivas();
   			echo json_encode($view->entregaPed($idPedido));
+	        break;
+	     case 'cancelaPed':
+	    	//traemos la informacion
+	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
+ 			$view = new view_recogidasActivas();
+  			echo json_encode($view->cancelaPed($idPedido));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

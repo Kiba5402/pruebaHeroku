@@ -131,7 +131,7 @@
 			$this->creaConexion();
 			//creamos el query
 			$consulta = "UPDATE public.mv_pedido 
-			SET id_estado_pedido=3
+			SET id_estado_pedido=3,fecha_recogida = '$hoy'
 			WHERE id_pedido=$idPedido;";
 			//Enviamos la consulta
 			$query = pg_query($this->conexion,$consulta) or die(-1);
@@ -148,7 +148,23 @@
 			$this->creaConexion();
 			//creamos el query
 			$consulta = "UPDATE public.mv_pedido 
-			SET id_estado_pedido=4
+			SET id_estado_pedido=4,fecha_entrega = '$hoy'
+			WHERE id_pedido=$idPedido;";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_affected_rows($query);
+			//retornamos elñ resultado
+			return $respQuery;
+		}
+
+		//funcion que permite cambiar a entregado el estado de un pedido
+		public function cancelaPed($idPedido){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "UPDATE public.mv_pedido 
+			SET id_estado_pedido=1,id_comprador=NULL
 			WHERE id_pedido=$idPedido;";
 			//Enviamos la consulta
 			$query = pg_query($this->conexion,$consulta) or die(-1);

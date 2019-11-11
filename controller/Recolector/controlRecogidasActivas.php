@@ -42,8 +42,13 @@ class controller_RecogidasAct{
 		);
 	}
 
-
-
+	//funcion que permite cambiar el estado de un pedido a entregado
+	function cancelaPed($idPedido){ 
+		$this->modelo = new modelRecolector();
+		return array(
+			'infoCancelaPed' => $this->modelo->cancelaPed($idPedido)
+		);
+	}
 }
 
 ?>

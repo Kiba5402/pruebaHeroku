@@ -19,11 +19,10 @@ function traerHistorial() {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(info);
         $('#contentMain').html(info.html);
         //ahora pintamos la informacion en la tabla
         if (!info.infoHistorial) {
-            $('#cargaOfertasActivas').html('No hay ofertas para mostrar')
+            $('#cargaHistorialOfertas').html('No hay ofertas para mostrar')
         }else{
             muestraHistorialOfertas(info.infoHistorial);
         }
@@ -45,7 +44,6 @@ function traerPedidosAct() {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(info);
         $('#contentMain').html(info.html);
         //ahora pintamos la informacion en la tabla
         if (!info.infoPedidosActivos) {

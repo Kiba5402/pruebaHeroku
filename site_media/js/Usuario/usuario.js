@@ -138,10 +138,8 @@ function traerPedidos() {
             //$('#cargaMat' + idMat).removeClass('d-none');
         }
     }).done(function(msg) {
-        console.log(msg);
         if (msg != -1) {
             var info = JSON.parse(msg);
-            console.log(info);
             if (!info) {
                 $('#cargaTabla').html('No hay pedidos para mostrar')
             } else {
@@ -215,7 +213,6 @@ function traerDetallePed(idPedido) {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(info);
         $('#cargaPedidos').addClass('d-none');
         //contenido del modal
         $('#contenidoModalDetallepedido').html(info.html);

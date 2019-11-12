@@ -69,7 +69,6 @@ function traerDetalleOferta(idOferta) {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(info);
         $('#contentDetalleOferta').html(info.html);
         $('#cargaOfertas').addClass('d-none');
         //contenido del modal

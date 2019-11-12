@@ -20,7 +20,6 @@ function traerDetalleHist(idPedido) {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
-        console.log(info);
         $('#contentDetallePedido').html(info.html);
         $('#cargaHistPedido').addClass('d-none');
         //contenido del modal
@@ -54,8 +53,7 @@ function traerDetalleHist(idPedido) {
 
 //funcion que pinta la informacion del historial de pedidos
 function muestraHistorialOfertas(informacion2) {
-    $('#cuerpoTablaHistPedido tr').remove();
-    console.log(informacion2);
+    $('#cuerpoTablaHistPedido tr').remove();;
     $.each(informacion2, function(index, value) {
         var fila = $('<tr/>', {
             'id': 'oferta' + value.idPedido
@@ -102,7 +100,6 @@ function muestraHistorialOfertas(informacion2) {
 // funcion que asigana la calificacion 
 function asigCalificacion(calf){
     $('.estrella').each(function(){
-        console.log($(this));
         if ($(this).attr('num') <= calf) {
             $(this).css('color','orange');
         }

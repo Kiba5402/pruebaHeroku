@@ -21,7 +21,6 @@ function traerDetallePedidoAct(idPedido) {
     }).done(function(msg) {
         $('#cargaPedidoActMain').addClass('d-none');
         var info = JSON.parse(msg);
-        console.log(info);
         $('#contentDetallePedidoActivo').html(info.html);
         //nombre del vendedor        
         $('#nombreVendPedAct').html(info.infoPedidoEnProgreso[0].nombre_vend);
@@ -51,7 +50,6 @@ function traerDetallePedidoAct(idPedido) {
 
 //funcion que nos ayuda con seteo de los botones
 function seteoBtn(idPedido, telefono, estadoPed) {
-    console.log(estadoPed);
     if (estadoPed == 2) {
         $('#btnCancelarDetPedAct').attr('onclick', 'cancelaPedAct(' + idPedido + ')');
         $('#btnRecogidoDetPedAct').attr('onclick', 'recoPedAct(' + idPedido + ')');
@@ -67,7 +65,6 @@ function seteoBtn(idPedido, telefono, estadoPed) {
 //funcion que pinta la informacion de la ofertas activas del recolector
 function muestraOfertasActivas(informacion2) {
     $('#cuerpoTablaPedidoAct tr').remove();
-    console.log(informacion2);
     $.each(informacion2, function(index, value) {
         var fila = $('<tr/>', {
             'id': 'oferta' + value.idPedido

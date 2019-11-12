@@ -62,7 +62,8 @@
 			matped.unidades as \"unidades_material\",um.nombre as \"unidad_medida\",
 			estPed.nombre_estado as \"estadoPed\",pedido.id_estado_pedido as \"id_estPed\",
 			matPed.valor_aprox as \"valor_aprox\",pedido.id_pedido as \"idPedido\",
-			pedido.horariorecogida as \"horario\", pedido.fecha_pedido as \"fecha\"
+			pedido.horariorecogida as \"horario\", pedido.fecha_pedido as \"fecha\",
+			pedido.calificacion as \"calificacion\"
 			FROM mv_pedido pedido inner join mv_materiales_pedido matPed
 			on pedido.id_pedido = matPed.id_pedido inner join mv_material mat
 			on matPed.id_material = mat.id_material inner join mv_unidad_medida um
@@ -171,6 +172,32 @@
 			//tomamos el resultado
 			$respQuery = pg_affected_rows($query);
 			//retornamos elñ resultado
+			return $respQuery;
+		}
+
+		//funcion que consulta los pedidos activos
+		public function historialPedidos($idPersona){
+			//creamos la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "SELECT mat.nombre as \"nombreMat\",
+			vend.nombre as \"nombre_vend\",estPed.nombre_estado as \"estadoPed\",
+			pedido.id_estado_pedido as \"id_estPed\",pedido.id_pedido as \"idPedido\",
+			pedido.fecha_pedido as \"fecha\"
+			FROM mv_pedido pedido inner join mv_materiales_pedido matPed
+			on pedido.id_pedido = matPed.id_pedido inner join mv_material mat
+			on matPed.id_material = mat.id_material inner join mv_unidad_medida um
+			on mat.id_und_medida_material = um.id_und_medida inner join mv_persona vend
+			on pedido.id_vendedor = vend.id_persona left join mv_persona comp
+			on pedido.id_comprador = comp.id_persona inner join mv_estado_pedido estPed
+			on pedido.id_estado_pedido = estPed.id_estado
+			WHERE pedido.id_comprador = $idPersona and (pedido.id_estado_pedido = 4 or pedido.id_estado_pedido = 5)
+			order by pedido.fecha_pedido desc;";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_fetch_all($query);
+			//retornamos el resultado
 			return $respQuery;
 		}
 

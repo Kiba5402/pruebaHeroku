@@ -46,6 +46,16 @@
 			);	
 		}
 
+		//funcion que nos permite calificar el pedido
+		public function calificarPedido($idPedido,$calificacion){
+			$this->controlador = new controller_agendamiento();
+			$respDetallePedido =  $this->controlador->calificarPedido($idPedido, $calificacion);
+			//formateamos el array de respuesta del controlador
+			return array(
+				'infoCalif' => $respDetallePedido['infoCalif'],
+			);	
+		}
+
 	}
 
 	/*
@@ -82,6 +92,13 @@
 	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
 	    	$view = new view_agendamiento();
   			echo json_encode($view->detallePedido($idPedido));
+	        break;
+	     case 'calificar':
+	    	//invocamos la funcion que nos trae la informacion de los pedidos dle usuario 
+	    	$idPedido = filter_input(INPUT_POST, 'idPedido', FILTER_SANITIZE_STRING);
+	    	$calificacion = filter_input(INPUT_POST, 'calificacion', FILTER_SANITIZE_STRING);
+	    	$view = new view_agendamiento();
+  			echo json_encode($view->calificarPedido($idPedido,$calificacion));
 	        break;
 	    default:
 	        include '../site_media/html/home.html';

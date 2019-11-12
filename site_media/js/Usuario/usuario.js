@@ -1,3 +1,27 @@
+//funcion que guardara la calificacion del servicio
+function calificacion(cal) {
+    $.ajax({
+        method: "POST",
+        url: "views/Usuario/formularioAgendamientoView.php",
+        type: 'json',
+        data: {
+            'funcion': 'calificar',
+            'idPedido': $('#formulario').attr('idPedido'),
+            'calificacion': cal
+        },
+        beforeSend: function() {
+            $('#cargaDetallePediCalf').removeClass('d-none');
+        }
+    }).done(function(msg) {
+        $('#cargaDetallePediCalf').addClass('d-none');
+        var info = JSON.parse(msg);
+        if (info.infoCalif == 1) {
+            $('#modalCalificacion').modal('show');
+        }
+
+    });
+}
+
 //funcion que trae el formulario de detalles de material
 function viewDetallesMat(idMat) {
     $.ajax({
@@ -27,7 +51,7 @@ function viewDetallesMat(idMat) {
         div.find('#valor').attr('precio', info.TipoMat.infoMat[0].precio_und_medida);
         //seteamos el id del material 
         localStorage.setItem('idMaterial', info.TipoMat.infoMat[0].id_material);
-
+        //mostramos la posibilidad de calificar si el estado es entregado
         $('#contentMain').html(div);
     });
 }
@@ -191,6 +215,7 @@ function traerDetallePed(idPedido) {
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
+        console.log(info);
         $('#cargaPedidos').addClass('d-none');
         //contenido del modal
         $('#contenidoModalDetallepedido').html(info.html);
@@ -214,8 +239,12 @@ function traerDetallePed(idPedido) {
         $('#valorDetPed').html('$' + formatMoneda(info.datos[0].valor_aprox));
         //Estado del pedido
         $('#estadoPedDetPed').html(info.datos[0].estadoPed);
+        if (info.datos[0].id_estPed == 4) {
+            $('#formulario').removeClass('d-none').attr('idPedido',info.datos[0].idPedido);
+            $('#formularioHr').removeClass('d-none');
+            $('#radio'+info.datos[0].calif).prop("checked", true);
+        }
         //mostramso el modal
         $('#modalDetallePedido').modal('show');
     });
 }
-

@@ -109,7 +109,6 @@ function muestraOfertasActivas(informacion2) {
         }).appendTo(fila);
         fila.appendTo($('#cuerpoTablaPedidoAct'));
     });
-
 }
 
 //funcion para contactar al vendedor de una material 

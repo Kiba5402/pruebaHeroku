@@ -12,14 +12,21 @@ function traerHistorial() {
         type: 'html',
         data: {
             'funcion': 'historial',
-            'idRecolector': '123'
+            'idRecolector': localStorage.getItem('idPersona')
         },
         beforeSend: function() {
             $('#cargaHistorial').removeClass('d-none');
         }
     }).done(function(msg) {
         var info = JSON.parse(msg);
+        console.log(info);
         $('#contentMain').html(info.html);
+        //ahora pintamos la informacion en la tabla
+        if (!info.infoHistorial) {
+            $('#cargaOfertasActivas').html('No hay ofertas para mostrar')
+        }else{
+            muestraHistorialOfertas(info.infoHistorial);
+        }
     });
 }
 

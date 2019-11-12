@@ -1,54 +1,101 @@
 <div class="modal-header" style="height: 2.4em;padding: 0.2em 0.5em 0em 0.3em;color: #fff;background-color: #7baf4d;">
-    <h5 class="modal-title">Detalle pedido #8</h5>
+    <h5 class="modal-title">Pedido en Progreso</h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
 <div class="modal-body">
     <div class="row">
-        <div class="col-12" style="text-align: center;">
-             <img id="imgusuario" src="./site_media/img/iconLogo2.png" style="width: 10.7em;">
+        <div class="col-3" style="text-align: left;">
+            <img id="imgusuario" src="./site_media/img/iconLogo2.png" style="width: 5.7em;">
         </div>
-        <div class="col-12" style="text-align: center;">
-             <h4>Juan Perez</h4>
+        <div class="col-9" style="text-align: left; padding-top: 1.3em;">
+            <h4 id="nombreVendHistPed" style="float: left;margin-right: 0.2em;"></h4>
+            <h4 id="numeroDelpedidoHistPed" style="float: left;"></h4>
         </div>
     </div>
     <hr>
-    <div class="form-group row">
-        <label for="tipoMat" class="col-sm-2 col-form-label labeModal">Tipo Material</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="tipoMat" value="Carton" disabled>
+    <div class="row">
+        <div class="col-12" style="text-align: center;">
+            <img id="imgusuario" class="rounded" src="./site_media/img/AggregarImagenes.png" style="width: 8.7em;">
         </div>
-        <label for="direccion" class="col-sm-2 col-form-label labeModal">Direccion</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="direccion" value="Cra98 #11g-78" disabled>
+        <div class="col-12" style="text-align: center;">
+            <h5>Foto Material</h5>
         </div>
-        <label for="tel" class="col-sm-2 col-form-label labeModal">Telefono</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="tel" value="3156004981" disabled>
+    </div>
+    <hr>
+    <div class="row" style="margin: 0em 0em 0em 0em;">
+        <div class="col-6">
+            <span for="fechaDetHistPed" class="labeModal">Fecha Oferta:</span>
         </div>
-        <label for="barrio" class="col-sm-2 col-form-label labeModal">Barrio</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="barrio" value="Fontibon" disabled>
+        <div class="col-6" style="text-align: left;">
+            <span id="fechaDetHistPed"></span>
         </div>
-        <label for="peso" class="col-sm-2 col-form-label labeModal">Peso</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="peso" value="10kg" disabled>
+        <div class="col-6">
+            <span for="tipoMatDetHistPed" class="labeModal">Tipo Material:</span>
         </div>
-        <label for="estadoMat" class="col-sm-2 col-form-label labeModal">Estado de Material</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="estadoMat" value="Bueno" disabled>
+        <div class="col-6" style="text-align: left;">
+            <span id="tipoMatDetHistPed"></span>
         </div>
-        <label for="Completado" class="col-sm-2 col-form-label labeModal">Estado de Pedido</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="estadoPed" value="Completado" disabled>
+        <div class="col-6">
+            <span for="direccionDetHistPed" class="labeModal">Direccion:</span>
         </div>
-        <label for="valor" class="col-sm-2 col-form-label labeModal">Valor</label>
-        <div class="col-sm-10">
-            <input class="form-control form-control-sm" id="valor" value="$4.000" disabled>
+        <div class="col-6" style="text-align: left;">
+            <span id="direccionDetHistPed"></span>
+        </div>
+        <div class="col-6">
+            <span for="telDetHistPed" class="labeModal">Telefono Vend:</span>
+        </div>
+        <div class="col-6" style="text-align: left;">
+            <span id="telDetHistPed"></span>
+        </div>
+        <div class="col-6">
+            <span for="barrioDetHistPed" class="labeModal">Localidad:</span>
+        </div>
+        <div class="col-6" style="text-align: left;">
+            <span id="barrioDetHistPed"></span>
+        </div>
+        <div class="col-6">
+            <span for="pesoDetHistPed" class="labeModal">Unidades:</span>
+        </div>
+        <div class="col-6" style="text-align: left;">
+            <span id="pesoDetHistPed"></span>
+        </div>
+        <div class="col-6">
+            <span for="valorDetHistPed" class="labeModal">Valor:</span>
+        </div>
+        <div class="col-6" style="text-align: left;">
+            <span id="valorDetHistPed"></span>
+        </div>
+        <div class="col-6">
+            <span for="horarioDetHistPed" class="labeModal">Horario:</span>
+        </div>
+        <div class="col-6" style="text-align: left;font-size: 0.9em;">
+            <span id="horarioDetHistPed"></span>
+        </div>
+        <div class="col-6">
+            <span for="estadoPedDetHistPed" class="labeModal">Estado Pedido:</span>
+        </div>
+        <div class="col-6" style="text-align: left;">
+            <span id="estadoPedDetHistPed"></span>
+        </div>
+        <div class="col-6">
+            <span for="calDetHistPed" class="labeModal">Calificación Serv:</span>
+        </div>
+        <div class="col-6" style="text-align: left;">
+            <p class="">
+                <span class="estrella" id="radio1" num="1">★</span>
+                <span class="estrella" id="radio2" num="2">★</span>
+                <span class="estrella" id="radio3" num="3">★</span>
+                <span class="estrella" id="radio4" num="4">★</span>
+                <span class="estrella" id="radio5" num="5">★</span>
+            </p>
         </div>
     </div>
 </div>
+</div>
 <div class="modal-footer">
+    <img id="cargaDetPedAct" class="d-none" src="./site_media/img/Spinner.gif" style="width: 2em;
+                    margin-top: -0.1em; margin-left: -0.3em;" alt="...">
     <button type="button" class="btn btn-sm btn-success btn-registrar" data-dismiss="modal">Cerrar</button>
 </div>

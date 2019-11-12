@@ -61,14 +61,19 @@ class controller_agendamiento{
 	//funcion que trae el detalle del pedido
 	public function detallePedido($idPedido){
 		$this->modelo = new modelAgendamiento();
-		return array(
+		return array(  	
 			'infoPed' => $this->modelo->detallePedidosUser($idPedido),
 			'html' => '/Usuario/detallePedido.html'
 		);
 	}
 
-
-
+	//funcion que nos permite calificar un pedido
+	public function calificarPedido($idPedido, $calificacion){
+		$this->modelo = new modelAgendamiento();
+		return array(
+			'infoCalif' => $this->modelo->calificaPed($idPedido, $calificacion),
+		);
+	}
 }
 
 ?>

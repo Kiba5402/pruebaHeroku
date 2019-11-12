@@ -131,7 +131,8 @@ if (session_status() == PHP_SESSION_NONE) {
 			vend.telefono as \"telefono_vend\",vend.localidad as \"localidad_vend\",
 			matped.unidades as \"unidades_material\",um.nombre as \"unidad_medida\",
 			estPed.nombre_estado as \"estadoPed\",pedido.id_estado_pedido as \"id_estPed\",
-			matPed.valor_aprox as \"valor_aprox\",pedido.id_pedido as \"idPedido\"
+			matPed.valor_aprox as \"valor_aprox\",pedido.id_pedido as \"idPedido\",
+			pedido.calificacion as \"calif\"
 			FROM mv_pedido pedido inner join mv_materiales_pedido matPed
 			on pedido.id_pedido = matPed.id_pedido inner join mv_material mat
 			on matPed.id_material = mat.id_material inner join mv_unidad_medida um
@@ -146,6 +147,22 @@ if (session_status() == PHP_SESSION_NONE) {
 			//tomamos el resultado
 			$respQuery = pg_fetch_all($query);
 			//retornamos el resultado
+			return $respQuery;
+		}
+
+		//funcion que permite calificar un pedido
+		public function calificaPed($idPedido, $calificacion){
+			//se crea la conexion
+			$this->creaConexion();
+			//creamos el query
+			$consulta = "UPDATE public.mv_pedido 
+			SET calificacion = '$calificacion'
+			WHERE id_pedido=$idPedido;";
+			//Enviamos la consulta
+			$query = pg_query($this->conexion,$consulta) or die(-1);
+			//tomamos el resultado
+			$respQuery = pg_affected_rows($query);
+			//retornamos elñ resultado
 			return $respQuery;
 		}
 

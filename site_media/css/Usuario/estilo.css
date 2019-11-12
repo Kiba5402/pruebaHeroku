@@ -1,51 +1,65 @@
 html {
-  font-family: "Lucida Sans", sans-serif;
+    font-family: "Lucida Sans", sans-serif;
 }
 
-.form_titulo
-{
+.form_titulo {
     margin: 0em 0em 1em 0em;
     background: #7baf4d;
-    color:#fff;
+    color: #fff;
     text-align: left;
     padding: 0.8em;
     font-weight: 100;
     font-size: 20px;
 }
 
-.contenedor-inputs
-{
+.contenedor-inputs {
     padding: 10px 30px;
 }
 
 .LblMateriales {
-  padding: 2px;
+    padding: 2px;
 }
 
-
-
-
-input
-{
+input {
     margin-bottom: 15px;
     padding: 15px;
     font-size: 16px;
     border-radius: 7px;
     border: 1px solid #7baf4d;
-
 }
 
-.input-48
-{
+.input-48 {
     width: 100%;
-
 }
 
-.btn-registrar
-{
+.btn-registrar {
     background: #7baf4d;
     border-color: #7baf4d;
     color: #fff;
 }
 
+#formulario label {
+    font-size: 20px;
+}
 
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    color: grey;
+}
+
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover~label {
+    color: orange;
+}
+
+input[type="radio"]:checked~label {
+    color: orange;
+}
